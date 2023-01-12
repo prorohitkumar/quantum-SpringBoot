@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Education",
+    "values": ["Education", "Study", "Educational"]
+  },
+  {
+    "name": "Insurance",
+    "values": ["Insurance", "Security", "Protection", "Protect"]
+  },
+  {
+    "name": "Retail",
+    "values": ["Retail", "Deal", "Market"]
+  },
+  {
+    "name": "IT",
+    "values": ["IT", "It", "Information"]
+  },
+  {
+    "name": "Banking",
+    "values": ["Banking", "Finance", "Financial"]
+  },
+  {
+    "name": "Automobile",
+    "values": ["Automobile", "Vehicle"]
+  },
+  {
+    "name": "Energy",
+    "values": ["Energy", "Power"]
+  },
+  {
+    "name": "Engineering and Construction",
+    "values": ["Engineering and Construction", "Construction"]
+  },
+  {
+    "name": "FMCG",
+    "values": ["FMCG", "Fmcg", "fast", "consumer", "goods"]
+  }
+]

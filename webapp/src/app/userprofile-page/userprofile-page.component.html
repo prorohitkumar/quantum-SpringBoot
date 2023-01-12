@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          <!-- Required meta tags -->
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+          <!--My CSS-->
+          <link rel="stylesheet" href="userprofile-page.component.css">
+          <title>User Profile Page</title>
+    </head>
+    <body>
+        <mat-grid-list cols="4" rowHeight="1:2">
+            <mat-grid-tile colspan="3" style="width: 100%; background-image: url(../../assets/images/629567.jpg);">
+                <mat-card style="width:80%; background-color: rgba(255,255,255,0.85)">
+                    <div style="width: 100%" [formGroup]="editForm">
+                        <br>
+                        <mat-tab-group animationDuration="0ms" style="margin:auto">
+                            <mat-tab label="Personal Details">
+                                <br><br>
+                                <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center">
+                                    <br>
+                                    <mat-form-field style="width: 45%;" appearance="outline">
+                                        <mat-label for="firstName"> First Name </mat-label> &nbsp; &nbsp;
+                                        <input matInput id="firstName" formControlName="firstName" placeholder="Enter your first name" type="text">
+                                        <mat-error> First Name cannot be empty or have numbers or symbols inside. </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field  style="width: 45%;"  appearance="outline">
+                                        <mat-label for="lastName"> Last Name </mat-label> &nbsp; &nbsp;
+                                        <input matInput formControlName="lastName" placeholder="Enter your last name" type="text">
+                                        <mat-error>Last Name cannot be empty or have numbers or symbols inside </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                </div>
+                                <br>
+                                <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center">
+                                    <br>
+                                    <mat-form-field  style="width: 45%;"  appearance="outline">
+                                        <mat-label for="phoneNo"> Phone Number </mat-label> &nbsp; &nbsp;
+                                        <input matInput id="phoneNo" formControlName="phoneNo" placeholder="Enter your phone number" type="text">
+                                        <mat-error> Phone Number MUST have ten digits, it cannot be empty or have alphabets or symbols </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field style="width: 45%;" appearance="outline">
+                                        <mat-label for="location"> Location </mat-label> &nbsp; &nbsp;
+                                        <!-- <input matInput id="location" formControlName="location" placeholder="Enter your location" type="text"> -->
+                                        <mat-select id="location" formControlName="location" name="location">
+                                            <mat-option *ngFor="let option of options" value={{option}}> {{option}} </mat-option>
+                                        </mat-select>
+                                        <mat-error> Location cannot be empty </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                </div>
+                                <br>
+                                <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center">
+                                    <br>
+                                    <mat-form-field style="width: 45%;" appearance="outline">
+                                        <mat-label for="gender"> Gender </mat-label> &nbsp; &nbsp;
+                                        <mat-select id="gender" formControlName="gender" name="gender">
+                                            <mat-option value="MALE"> Male </mat-option>
+                                            <mat-option value="FEMALE"> Female </mat-option>
+                                            <mat-option value="OTHER"> Other </mat-option>
+                                        </mat-select>
+                                        <mat-error> Gender cannot be empty.  </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field  style="width: 45%;"  appearance="outline">
+                                        <mat-label for="dob"> Date of Birth </mat-label> &nbsp; &nbsp;
+                                        <input matInput id="dob" formControlName="dateOfBirth" placeholder="Enter your date of birth" type="date">
+                                        <mat-error> Date of Birth cannot be empty </mat-error>
+                                    </mat-form-field>
+                                    <br>     
+                                </div>
+                                <br>
+                            </mat-tab>
+                            <mat-tab  label="Professional Details">
+                                <br><br>
+                                <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center">
+                                    <br>
+                                    <mat-form-field style="width: 95%;" appearance="outline">
+                                        <mat-label for="designation"> Designation </mat-label> &nbsp; &nbsp;
+                                        <!-- <input matInput id="designation" formControlName="designation" placeholder="Enter your designation" type="text"> -->
+                                        <mat-select id="designation" formControlName="designation" name="designation">
+                                            <mat-option *ngFor="let option of desoption" value={{option}}> {{option}} </mat-option>
+                                        </mat-select>
+                                        <mat-error> Designation Cannot Be Empty </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                </div>
+                                <br>
+                                <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center">
+                                    <br>
+                                    <mat-form-field style="width: 45%;" appearance="outline">
+                                        <mat-label for="experienceInYrs"> Experience In Years: </mat-label> &nbsp; &nbsp;
+                                        <input matInput id="experienceInYrs" formControlName="experienceInYrs" placeholder="Enter your total experience" type="number">
+                                        <mat-error> Experience field cannot be empty or have value less than one </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field style="width: 45%;" appearance="outline">
+                                        <mat-label for="CTC"> CTC </mat-label> &nbsp; &nbsp;
+                                        <input matInput formControlName="CTC" placeholder="Enter your CTC" type="number">
+                                        <mat-error> CTC cannot be empty or have alphabets or symbols </mat-error>
+                                    </mat-form-field>       
+                                    <br>
+                                </div>
+                                <br>
+                                <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center">
+                                    <br>
+                                    <mat-form-field style="width: 45%;" appearance="outline">
+                                        <mat-label for="employee">Select Whether Employee Or Not: </mat-label> &nbsp; &nbsp;
+                                        <mat-select id="employee" formControlName="isAnEmployee" name="employee">
+                                            <mat-option value=true> True </mat-option>
+                                            <mat-option value=false> False </mat-option>
+                                        </mat-select>
+                                        <mat-error> Employee field cannot be empty </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field style="width:45%" appearance="outline">
+                                        <mat-label for="available">Select Whether Available for Project or Not: </mat-label> &nbsp; &nbsp;
+                                        <mat-select id="available" formControlName="isAvailableForProject" name="available">
+                                            <mat-option value=true> True </mat-option>
+                                            <mat-option value=false> False </mat-option>
+                                        </mat-select>
+                                        <mat-error> Availability Field cannot be empty </mat-error>
+                                    </mat-form-field>
+                                    <br>
+                                </div>
+                            </mat-tab>
+                            <mat-tab  label="Skill Details">
+                                <br><br>
+                                <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%" fxLayoutGap.xs="5%">
+                                    <mat-card style="background-color: rgb(255, 255, 255, 0.25);" fxFlex="50%" appearance="outline" fxLayout="row" fxLayout.xs="column"  fxLayout.sm="column" fxLayoutGap="2%">
+                                        <mat-form-field fxFlex="50%" appearance="outline">
+                                            <mat-label for="skillName"> Select Skill Name </mat-label>
+                                            <!-- <input matInput id="skillName" formControlName="skillName" placeholder="Enter the skill name" type="text"> -->
+                                            <mat-select id="skillName" formControlName="skillName" name="skillName">
+                                                <mat-option *ngFor="let option of skilloptions " value={{option}}> {{option}} </mat-option>
+                                            </mat-select>
+                                            <mat-error> Skill Name is Empty </mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field  fxFlex="50%" appearance="outline">
+                                            <mat-label for="skillLevel"> Select Skill Level </mat-label>
+                                            <mat-select id="skillLevel" formControlName="skillLevel" name="skillLevel">
+                                                <mat-option value="BASIC"> BASIC </mat-option>
+                                                <mat-option value="INTERMEDIATE"> INTERMEDIATE </mat-option>
+                                                <mat-option value="ADVANCE"> ADVANCE </mat-option>
+                                            </mat-select>
+                                            <mat-error> Skill Level is Empty </mat-error>
+                                        </mat-form-field>
+                                        <button matTooltip="Add a new skill" mat-raised-button class="btn btn-primary" (click)="addSkill()" style="height: 53px; "> <mat-icon>add</mat-icon> </button>
+                                    </mat-card>
+                                    <mat-card style="background-color: rgb(255, 255, 255, 0); box-shadow: none !important;">
+                                        <mat-chip-list aria-label="Skill selection">
+                                            <div *ngFor="let skill of userProfile.skills">
+                                                <div *ngIf=" skill.level === basic">
+                                                    <mat-chip [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: green;">
+                                                        {{skill.skillName}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                    </mat-chip>
+                                                </div>
+                                                <div *ngIf="skill.level === intermediate">
+                                                <mat-chip  [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: yellow;">
+                                                    {{skill.skillName}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                    </mat-chip>
+                                                </div>
+                                                <div *ngIf="skill.level === advance">
+                                                    <mat-chip  [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: red;">
+                                                        {{skill.skillName}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                    </mat-chip>
+                                                </div>
+                                            </div>
+                                        </mat-chip-list>
+                                    </mat-card>
+                                </div>
+                                <br>
+                                <div>
+                                    <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%" fxLayoutGap.xs="5%">
+                                        <mat-card style="background-color: rgb(255, 255, 255, 0.25);" fxFlex="50%" appearance="outline" fxLayout="row" fxLayout.xs="column"  fxLayout.sm="column" fxLayoutGap="2%">
+                                            <mat-form-field fxFlex="50%" appearance="outline">
+                                                <mat-label for="domainName"> Select Domain Name </mat-label>
+                                                <mat-select id="domainName" formControlName="domainName" name="domainName">
+                                                    <mat-option *ngFor="let option of profOptions " value={{option}}> {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> Domain Name is Empty </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field  fxFlex="50%" appearance="outline">
+                                                <mat-label for="domainNumber"> Enter Domain Experience (in Years) </mat-label>
+                                                <input matInput id="domainNumber" formControlName="domainNumber" name="domainNumber" type="number">
+                                                <mat-error> Domain Experience cannot be less than 0 </mat-error>
+                                            </mat-form-field>
+                                            <button matTooltip="Add a new Domain" mat-raised-button class="btn btn-primary" (click)="addDomain()" style="height: 53px; "> <mat-icon>add</mat-icon> </button>
+                                        </mat-card>
+                                    </div>
+                                    <br>
+                                    <mat-form-field style="width: 90%" appearance="none">
+                                        <mat-chip-list #chipList2 aria-label="Domain selection">
+                                            <mat-chip *ngFor="let domain of userProfile.domainExperiences" [selectable]="selectable" [removable]="removable" (removed)="removeDomain(domain)">
+                                                {{domain.domainName}} Domain - Experience: {{domain.domainExperienceInYrs}} years
+                                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                            </mat-chip>
+                                        </mat-chip-list>
+                                    </mat-form-field>
+                                </div> 
+                            </mat-tab>
+                        </mat-tab-group>
+                        <mat-card appearance="none" style="width: 99%; box-shadow: none !important; background-color: rgba(255,255,255,0)">
+                            <button class="btn btn-success" mat-raised-button style=" padding:1.5%; float: right; color: white; background-color: #1976d2; text-align: center;" (click)="editProfile()" [disabled]="!editForm.valid"><h5>Submit</h5> </button>
+                        </mat-card>
+                        <br><br>
+                    </div>
+                </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile style="background-color: whitesmoke" colspan="1" class="details-grid">
+                <div style="position: absolute; top: 80px">
+                    <!-- <img style="position: relative; left: 50px; border-radius: 50%;" height="150px" width="150px" src="../../assets/images/profile.svg"> -->
+                    <form [formGroup]="registrationForm">
+
+                        <div class="group-gap">
+        
+                            <!-- Upload image -->
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <!-- <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" /> -->
+                    </div>
+                    <div class="avatar-preview">
+                      <div id="imagePreview" style="border-radius: 50%; height: 200px; width: 200px; margin-left: 40px;" [style.backgroundImage]="'url('+ imageUrl +')'" [style.backgroundSize]="'cover'">  
+                        <div class="image-upload">
+                            <label for="imageUpload">
+                              <img src="https://icon-library.net/images/upload-photo-icon/upload-photo-icon-21.jpg" style="height: 40px;width: 40px; margin-top: 150px; margin-left: 130px; cursor: pointer;"/>
+                            </label> 
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" style="margin-top: 160px; color: transparent; display: none;"/>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>        
+              </form>
+                    <br>                    
+                    <section *ngIf="dataChecker()==true" style="position: relative; top: 20px; left: 5px;" class="intro-section">
+                        <h3> {{userProfile.firstName}}  {{userProfile.lastName}}</h3>
+                        <sub class="mat-h4"> {{userProfile.email}}</sub>
+                        <h3 class="mat-h2"> {{userProfile.designation}}</h3>
+                        <h5 class="mat-h3"><b> Experience: </b>  {{userProfile.experienceInYrs}} Years </h5>
+                        <h5 class="mat-h3"><b> Phone No. </b>{{userProfile.phoneNo}} </h5>
+                        <h5 class="mat-h3"><b> Date of Birth: </b> {{userProfile.dateOfBirth}} </h5>
+                    </section>
+                    <br>
+                    <br><br><br><br><br>
+                    <div style="width: 100%; height:40%">
+                        <button matTooltip="To access the AI Chatbot for User Profile Updation" class="btn btn-primary" style=" align-self: flex-end; float: right" (click)="rerouteAI()"  mat-icon-button><mat-icon style="transform: rotate(270deg)">chat</mat-icon> <mat-icon>smart_toy</mat-icon></button>
+                    </div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </body>
+</html>

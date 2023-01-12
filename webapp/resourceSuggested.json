@@ -1,0 +1,41 @@
+{
+    "expertise": [
+        {
+            "designation": "Full Stack",
+            "noOfResources": 3,
+            "resourcesSuggested": [
+                {
+                    "email": "sumeet@gmail.com",
+                    "name" : "Sumeet Shinde",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "Abhishek Gupta",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "Shujaat Siddiqui",
+                    "designation": "Full Stack"
+                }
+            ]
+        },
+        {
+            "designation": "Frontend",
+            "noOfResources": 2,
+            "resourcesSuggested": [
+                {
+                    "email": "shivam05@gmail.com",
+                    "name" : "Shivam Tomar",
+                    "designation": "Frontend"
+                },
+                {
+                    "email": "akash@gmail.com",
+                    "name" : "Akash Sharma",
+                    "designation": "Frontend"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 8091
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    fetchRegistry: true
+    registerWithEureka: true
+
+hystrix.command.default.execution.timeout.enabled: false
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 11000
+hystrix.command.default.execution.isolation.strategy: THREAD
+ribbon:
+  ReadTimeout: 60000
+#  eager-load:
+#    enabled: true
+zuul:
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+  routes:
+    authenticationservice:
+      serviceId: authentication-service
+    profileservice:
+      serviceId: profile-service
+    projectservice:
+      serviceId: project-service
+    searchservice:
+      serviceId: search-service
+    dialogflowservice:
+      serviceId: dialogflow-service
+    resourceallocationcservice:
+      serviceId: resource-allocation-c-service
+    resourceallocationengine:
+      serviceId: resource-allocation-engine
+    nlpservice:
+      serviceId: nlp-service

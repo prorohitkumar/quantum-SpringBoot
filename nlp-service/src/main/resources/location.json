@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Rajahmundry",
+    "values": ["Rajahmundry", "Rajamahendravaram", "Rajamundry", "Rajamahendri"]
+  },
+  {
+    "name": "Rampur",
+    "values": ["Rampur", "Kather", "Faizabad", "Mustafabad"]
+  },
+  {
+    "name": "Bangalore",
+    "values": ["Bangalore", "Bengaluru"]
+  },
+  {
+    "name": "Delhi",
+    "values": ["Delhi", "New Delhi", "Indraprastha", "Lalkot", "Tughluqabad", "Jahanpanah", "Ferozabad", "Dinpanah", "Shergarh", "Shahjanabad"]
+  },
+  {
+    "name": "Hyderabad",
+    "values": ["Hyderabad", "Secunderabad"]
+  },
+  {
+    "name": "Pune",
+    "values": ["Pune", "Poona"]
+  },
+  {
+    "name": "Mumbai",
+    "values": ["Mumbai", "Bombay"]
+  },
+  {
+    "name": "Chennai",
+    "values": ["Chennai", "Madras"]
+  },
+  {
+    "name": "Noida",
+    "values": ["Noida", "Buddh Nagar"]
+  },
+  {
+    "name": "Gurgaon",
+    "values": ["Gurgaon", "Gurugram"]
+  },
+  {
+    "name": "Ahmedabad",
+    "values": ["Ahmedabad", "Karnavati"]
+  },
+  {
+    "name": "Mysore",
+    "values": ["Mysore", "Mysuru"]
+  },
+  {
+    "name": "Goa",
+    "values": ["Goa", "Sindapur", "Sandabur", "Mahassapatam"]
+  },
+  {
+    "name": "Kolkata",
+    "values": ["Kolkata", "Calcutta", "Kalikata"]
+  },
+  {
+    "name": "Chandigarh",
+    "values": ["Chandigarh"]
+  },
+  {
+    "name": "Lucknow",
+    "values": ["Lucknow", "Lakhanpur", "Lakhnau"]
+  }
+]

@@ -1,0 +1,199 @@
+<div *ngIf="!isProjectLoaded">
+  <div class="d-flex justify-content-center" style="margin-top: 10%">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div
+    class="d-flex justify-content-center"
+    style="margin-top: 5%; margin-bottom: 5%"
+  >
+    <h1 class="display-5">Loading your project..</h1>
+  </div>
+</div>
+<div
+  style="display: flex; flex-direction: column; width: 100%"
+  *ngIf="isProjectLoaded"
+>
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      background-color: whitesmoke;
+    "
+  >
+    <div class="d-flex justify-content-between" style="padding: 1%">
+      <div>
+        <h1 class="display-4" style="color: rgb(2, 2, 1)">
+          {{ project.projectName }}
+        </h1>
+        <span
+          class="material-icons"
+          style="color: rgb(53, 51, 49); float: left; margin-left: 5px"
+          >assignment_ind&nbsp;</span
+        >
+        <h5 style="float: left">
+          <span class="badge text-dark" style="background-color: burlywood"
+            >{{ project.manager.firstName }}
+            {{ project.manager.lastName }}</span
+          >
+        </h5>
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          margin-top: 7px;
+          margin-right: 2%;
+          font-size: large;
+        "
+      >
+        <span [ngStyle]="{ color: statusColor }">
+          <span class="material-icons" style="float: left">
+            {{ statusIcon }}
+          </span>
+          <p
+            class="font-weight-normal"
+            style="float: left"
+            [style.color]="getColor(project?.projectStatus)"
+          >
+            {{ getProjectStatus() }}
+          </p>
+        </span>
+        &nbsp; &nbsp;
+        <span style="color: rgb(37, 36, 34)">
+          <span class="material-icons" style="float: left"> location_on </span>
+          <p class="font-weight-normal" style="float: left">
+            {{ project.location }}
+          </p>
+        </span>
+      </div>
+    </div>
+    <div style="margin: 1.5%; margin-top: 5px; margin-bottom: 1%">
+      <p class="lead" style="color: rgb(37, 36, 34)">
+        {{ project.projectDescription }}
+      </p>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        margin: 1.5%;
+        margin-top: 5px;
+        margin-bottom: 1%;
+        color: rgb(37, 36, 34);
+        font-size: large;
+      "
+    >
+      <span>
+        <span class="material-icons" style="float: left"> today </span>
+        <p class="font-weight-normal" style="float: left">
+          {{ project?.startDate | date: "dd-MM-yyyy" }}
+        </p>
+      </span>
+      &nbsp; &nbsp;
+      <span>
+        <span class="material-icons" style="float: left"> event </span>
+        <p class="font-weight-normal" style="float: left">
+          {{ project?.endDate | date: "dd-MM-yyyy" }}
+        </p>
+      </span>
+    </div>
+  </div>
+  <div style="margin: 0%">
+    <div class="jumbotron" *ngIf="isError">
+      <h1 class="display-5">Insufficient Resources!</h1>
+      <p class="lead">
+        The requried number of resources for this project is not Available.
+      </p>
+      <hr class="my-4" />
+      <p>Click below to try again.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" role="button" (click)="tryAgain()"
+          >Find Resources</a
+        >
+      </p>
+    </div>
+    <div *ngIf="loadingResourcesSpinner()">
+      <div class="d-flex justify-content-center" style="margin-top: 7%">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div
+        class="d-flex justify-content-center"
+        style="margin-top: 5%; margin-bottom: 5%"
+      >
+        <h1 class="display-5">Finding resources for your project..</h1>
+      </div>
+    </div>
+    <div class="mid" *ngIf="isResourcesLoaded">
+      <h2 style="text-align: center; font-weight: 600; color: aliceblue">
+        Available Resources For Project
+      </h2>
+      <br />
+      <div class="row">
+        <div
+          *ngFor="let expertise of expertiseArray; let i = index"
+          fxLayout="row"
+          style="
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            height: 100%;
+          "
+        >
+          <div class="column">
+            <p
+              style="
+                text-align: center;
+                justify-content: center;
+                font-weight: 300;
+                color: black;
+                font-weight: 600;
+                font-size: x-large;
+                margin-top: 5px;
+              "
+            >
+              {{ expertise.designation }} Developer
+            </p>
+            <app-resource-card
+              fxLayout="column"
+              class="card"
+              *ngFor="
+                let resource of expertise?.resourcesSuggested
+                  | slice: 0:expertise?.noOfResources / 3;
+                let j = index
+              "
+              [resource]="resource"
+              [expertise]="expertise"
+              [indexOfExpertiseArray]="i"
+              [indexOfResourceArray]="j"
+              (index)="getIndex($event)"
+            >
+            </app-resource-card>
+            <div
+              style="text-align: center; margin-bottom: 2%"
+              *ngIf="expertiseArray[i].resourcesSuggested.length"
+            >
+              +{{
+                expertiseArray[i].resourcesSuggested.length -
+                  expertiseArray[i].noOfResources / 3
+              }}
+              more
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="d-flex flex-row-reverse bd-highlight"
+        style="margin-top: 1%; margin-right: 1%"
+      >
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="btn-create-team"
+          (click)="onSubmit()"
+        >
+          Create Team
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

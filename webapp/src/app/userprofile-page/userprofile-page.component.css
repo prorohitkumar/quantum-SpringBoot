@@ -1,0 +1,77 @@
+body
+{
+   color: #434262;
+   height:100%;
+   width:100%;
+
+}
+
+.details-grid
+{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.intro-section
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs-section
+{
+    margin:auto;
+    width: 100%;
+   
+}
+
+.tabs-card
+{
+   color:#434262;
+  float: right;
+  
+}
+
+.personal-details
+{
+    color:  #434262;
+}
+
+.professional-details
+{
+    color:  #434262;
+}
+
+.skills
+{
+    color:  #434262;
+    
+}
+
+
+
+::ng-deep .mat-tab-label
+{
+    color:  #434262 !important;
+    opacity: 0.5 !important;
+    font-size: large;
+    font-weight: 600;
+    margin: auto;
+}
+
+::ng-deep .mat-icon-button
+{
+    height:72px !important;
+    width:72px !important;
+}
+
+::ng-deep .mat-icon{
+    font-size: 25px;
+    
+}
+
+#sub{
+    vertical-align: sub;
+  font-size: larger;
+}

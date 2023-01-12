@@ -1,0 +1,46 @@
+.clear-Button{
+    border: 0ch;
+     background-color:white ; 
+     width: 35px; 
+     height: 30px;
+ margin-top: 10px;
+  margin-bottom: 10px; 
+  margin-left: -100px;
+  outline: none;
+}
+.clear-search{
+ margin-top: 3px;
+}
+.search-button{
+     border: 0ch; 
+     background-color:white ;
+      width: 35px;
+       height: 30px; 
+        margin-top: 10px;
+         margin-bottom: 10px;
+         margin-right: -60px; 
+    outline: none;
+}
+
+#mic{
+    border: 0ch; 
+     background-color:white ;
+     width: 35px;
+       height: 30px; 
+        margin-top: 13px;
+         margin-bottom: 13px;
+         margin-left: -45px;
+         outline: none;
+}
+
+#mic:hover{
+  color: #95dfc0;
+}
+
+.search-button:hover{
+  color: #95dfc0;
+}
+
+.clear-search:hover{
+  color: #95dfc0;
+}

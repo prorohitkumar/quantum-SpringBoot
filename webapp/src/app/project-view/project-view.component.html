@@ -1,0 +1,210 @@
+<!-- <div *ngIf="!isProjectLoaded">
+  <div class="d-flex justify-content-center" style="margin-top: 10%">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="d-flex justify-content-center" style="margin-top: 5%; margin-bottom: 5%">
+    <h1 class="display-5">Loading your project..</h1>
+  </div>
+</div>
+
+<div style="padding: 5%; padding-top: 1%; width: 100%" *ngIf="isProjectLoaded">
+  <div style="display: flex; flex-direction: column; width: 100%; background-image: url({{
+      projectImage
+    }}); background-repeat: no-repeat;">
+    <div class="d-flex justify-content-between" style="padding: 1%">
+      <div>
+        <h1 class="display-4" style="color: burlywood ;">
+          {{ project.projectName }}
+        </h1>
+        <span class="material-icons" style="color: burlywood; float: left; margin-left: 5px">assignment_ind&nbsp;</span>
+        <h5 style="float: left">
+          <span class="badge text-dark" style="background-color: burlywood ;">{{ project.manager.firstName }}
+            {{ project.manager.lastName }}</span>
+        </h5>
+      </div>
+
+      <div style="
+          display: flex;
+          flex-direction: row;
+          margin-top: 7px;
+          margin-right: 2%;
+          font-size: large;
+        ">
+        <span [ngStyle]="{ color: statusColor }">
+          <span class="material-icons" style="float: left">
+            {{ statusIcon }}
+          </span>
+          <p class="font-weight-normal" style="float: left">
+            {{ project.projectStatus }}
+          </p>
+        </span>
+
+        &nbsp; &nbsp;
+
+        <span style="color: orange">
+          <span class="material-icons" style="float: left"> location_on </span>
+          <p class="font-weight-normal" style="float: left">
+            {{ project.location }}
+          </p>
+        </span>
+      </div>
+    </div>
+
+    <div style="margin: 1.5%; margin-top: 5px; margin-bottom: 1%">
+      <p class="lead" style="color: burlywood">
+        {{ project.projectDescription }}
+      </p>
+    </div>
+
+    <div style="
+        display: flex;
+        flex-direction: row;
+        margin: 1.5%;
+        margin-top: 5px;
+        margin-bottom: 1%;
+        color: burlywood;
+        font-size: large;
+      ">
+      <span>
+        <span class="material-icons" style="float: left"> today </span>
+        <p class="font-weight-normal" style="float: left">{{ startDate }}</p>
+      </span>
+
+      &nbsp; &nbsp;
+
+      <span>
+        <span class="material-icons" style="float: left"> event </span>
+        <p class="font-weight-normal" style="float: left">{{ endDate }}</p>
+      </span>
+    </div>
+  </div>
+<div style="margin-left: 0%;width:100%;">
+  <div class="jumbotron" *ngIf="!isTeamFormed" >
+    <h1 class="display-5">Team Not Formed!</h1>
+    <p class="lead">
+      The resources for this project have not been allocated yet.
+    </p>
+    <hr class="my-4" />
+    <p>Click below to create an efficent team for this project.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" role="button" (click)="createTeam()">Create Team</a>
+    </p>
+  </div>
+</div> -->
+
+<div *ngIf="!isProjectLoaded">
+  <div class="d-flex justify-content-center" style="margin-top: 10%">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="d-flex justify-content-center" style="margin-top: 5%; margin-bottom: 5%">
+    <h1 class="display-5">Loading your project..</h1>
+  </div>
+</div>
+<div style="display: flex; flex-direction: column; width: 100%" *ngIf="isProjectLoaded">
+  <div
+    style="display: flex; flex-direction: column; width: 100%;background-color: whitesmoke;">
+    <div class="d-flex justify-content-between" style="padding: 1%">
+      <div>
+        <h1 class="display-4" style="color: rgb(2, 2, 1) ;">
+          {{ project.projectName }}
+        </h1>
+        <span class="material-icons"
+          style="color: rgb(53, 51, 49); float: left; margin-left: 5px">assignment_ind&nbsp;</span>
+        <h5 style="float: left">
+          <span class="badge text-dark" style="background-color: burlywood ;">{{ project.manager.firstName }}
+            {{ project.manager.lastName }}</span>
+        </h5>
+      </div>
+      <div style="display: flex;flex-direction: row;margin-top: 7px;margin-right: 2%;font-size: large;">
+        <span [ngStyle]="{ color: statusColor }">
+          <span class="material-icons" style="float: left">
+            {{ statusIcon }}
+          </span>
+          <p class="font-weight-normal" style="float: left" [style.color]="getColor(project?.projectStatus)">
+            {{getProjectStatus()}}
+          </p>
+        </span>
+        &nbsp; &nbsp;
+        <span style="color:rgb(37, 36, 34) ">
+          <span class="material-icons" style="float: left"> location_on </span>
+          <p class="font-weight-normal" style="float: left">
+            {{ project.location }}
+          </p>
+        </span>
+      </div>
+    </div>
+    <div style="margin: 1.5%; margin-top: 5px; margin-bottom: 1%">
+      <p class="lead" style="color: rgb(37, 36, 34)">
+        {{ project.projectDescription }}
+      </p>
+    </div>
+    <div
+      style="display: flex;flex-direction: row;margin: 1.5%;margin-top: 5px;margin-bottom: 1%;color:  rgb(37, 36, 34);font-size: large;">
+      <span>
+        <span class="material-icons" style="float: left"> today </span>
+        <p class="font-weight-normal" style="float: left">{{project?.startDate | date : "dd-MM-yyyy"}}</p>
+      </span>
+      &nbsp; &nbsp;
+      <span>
+        <span class="material-icons" style="float: left"> event </span>
+        <p class="font-weight-normal" style="float: left">{{project?.endDate | date : "dd-MM-yyyy"}}</p>
+      </span>
+    </div>
+  </div>
+  <div style="margin: 0%;">
+    <div class="jumbotron" *ngIf="!isTeamFormed">
+      <h1 class="display-5">Team Not Formed!</h1>
+      <p class="lead">
+        The resources for this project have not been allocated yet.
+      </p>
+      <hr class="my-4" />
+      <p *ngIf="isManager">Click below to create an efficent team for this project.</p>
+      <p class="lead" *ngIf="isManager">
+        <a class="btn btn-primary btn-lg" role="button" (click)="createTeam()">Create Team</a>
+      </p>
+    </div>
+    <div *ngIf="isTeamFormed" style="margin-bottom: 50px;"> 
+      <figure class="text-center" style="padding-left: 2%; padding-right: 2%; margin-top: 1%;">
+        <span class="d-block p-2" style="color:burlywood; background-image: url({{
+          resourceImage
+        }}); background-repeat: no-repeat;">
+          <p class="h4">Resources Allocated</p>
+        </span>
+      </figure>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        *ngFor="let resource of project.allocatedResources">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="material-icons"> perm_identity&nbsp; </span>
+            {{ resource.firstName }} {{ resource.lastName }}
+          </mat-panel-title>
+          <mat-panel-description>
+            <span class="material-icons"> work&nbsp; </span>
+            {{ resource.designation }}
+          </mat-panel-description>
+
+          <mat-panel-description>
+            <span class="material-icons"> email&nbsp; </span>
+            {{ resource.email }}
+          </mat-panel-description>
+
+          <mat-panel-description>
+            <span class="material-icons"> phone&nbsp; </span>
+            +91-{{ resource.phoneNo }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-list role="list">
+          <mat-list-item role="listitem">
+            <span class="material-icons"> schedule&nbsp; </span>
+            {{ resource.experienceInYrs }} Years
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <span class="material-icons"> monetization_on&nbsp; </span>
+            {{ resource.ctc }}
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </div>
+  </div>

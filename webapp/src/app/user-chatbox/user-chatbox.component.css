@@ -1,0 +1,26 @@
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: whitesmoke;
+    border-radius: 5px;
+  }
+
+  input::placeholder 
+  {                 
+    text-align: center;
+  }
+
+  .bot-chip{
+    height:fit-content; 
+    background-color: #1976d2;
+    color: black;
+    float:left;  
+    max-width: 50%; 
+    word-wrap: break-word;
+  }
+
+  .user-chip
+  {
+    height:fit-content; 
+    float:right; 
+    max-width: 50%;  
+    word-wrap: break-word;
+  }

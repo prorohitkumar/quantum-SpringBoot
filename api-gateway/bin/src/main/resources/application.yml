@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 8091
+
+eureka:
+  client:
+    serviceUrl:
+      default-zone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    fetchRegistry: true
+    registerWithEureka: true
+
+zuul:
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+  routes:
+    authenticationservice:
+      serviceId: authentication-service
+    profileservice:
+      serviceId: profile-service
+    projectservice:
+      serviceId: project-service
+    searchservice:
+      serviceId: search-service

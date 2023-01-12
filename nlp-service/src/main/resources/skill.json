@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Java",
+    "values": ["Java"]
+  },
+  {
+    "name": "Angular",
+    "values": ["Angular", "Angularjs"]
+  },
+  {
+    "name": "JavaScript",
+    "values": ["JavaScript", "Javascript"]
+  },
+  {
+    "name": "Bootstrap",
+    "values": ["Bootstrap", "Bootstrap5", "Bootstrap4", "Bootstrap3"]
+  },
+  {
+    "name": "Docker",
+    "values": ["Docker"]
+  },
+  {
+    "name": "C#",
+    "values": ["C#", "Csharp"]
+  },
+  {
+    "name": "NoSQL",
+    "values": ["NoSQL", "Nosql", "Mongo", "Mongodb"]
+  },
+  {
+    "name": "SQL",
+    "values": ["SQL", "Sql", "MySQL", "Mysql"]
+  },
+  {
+    "name": "Graph Database",
+    "values": ["Graph Database", "Graph", "Neo4j", "Neo"]
+  },
+  {
+    "name": "React",
+    "values": ["React", "ReactJS", "Reactjs"]
+  },
+  {
+    "name": "Python",
+    "values": ["Python", "Python3", "Python2"]
+  },
+  {
+    "name": "Ruby On Rails",
+    "values": ["Ruby", "Rails"]
+  },
+  {
+    "name": "Spring",
+    "values": ["Spring"]
+  },
+  {
+    "name": "Hibernate",
+    "values": ["Hibernate"]
+  }
+]

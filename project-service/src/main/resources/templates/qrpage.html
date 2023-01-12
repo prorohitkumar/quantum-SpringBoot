@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
+    <title>Quantum</title>
+</head>
+<body>
+<div style="width: 100%; text-align: center">
+    <h1 th:text="'The '+ ${projectName} + ' Details Are Given In QR Format Below'"></h1>
+</div>
+<div style="width: 100%; text-align: center">
+<img th:src="@{'data:image/png;base64,'+${qrCode}}",  height="500" width="500" alt="red dot">
+</div>
+
+</body>
+</html>

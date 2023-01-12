@@ -1,0 +1,22 @@
+<br />
+
+<div [formGroup]="editForm">
+  <div mat-dialog-content>
+    <mat-form-field style="width: 90%" appearance="outline">
+      <mat-label for="OTPValue"> OTP Authentication</mat-label>
+      <input
+        matInput
+        id="OTPValue"
+        formControlName="OTPValue"
+        placeholder="Enter OTP sent to email"
+        type="text"
+      />
+    </mat-form-field>
+    <p>{{ errMsg }}</p>
+  </div>
+  <div mat-dialog-action>
+    <button class="btn btn-primary" mat-button (click)="onSubmit()">
+      Submit OTP
+    </button>
+  </div>
+</div>

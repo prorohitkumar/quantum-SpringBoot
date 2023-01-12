@@ -1,0 +1,112 @@
+.mat_navbar {
+  background-color: #1976d2;
+}
+
+.mat_navbar h1.logo {
+  padding-left: 10px;
+}
+
+.mat_navbar h1.logo a {
+  color: white;
+  text-decoration: none;
+}
+
+.mat_navbar .username {
+  color: white;
+  font-size: 16px;
+}
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+.mat_navbar .navbar_item {
+  display: block;
+  margin: 0 10px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid white;
+  text-align: center;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar .sidebar_list .sidebar_list_item {
+  padding: 0 10px;
+}
+
+.sidebar .sidebar_list .sidebar_list_item .icon {
+  width: 15px;
+  margin-right: 10px;
+}
+
+
+.notification-wrapper {
+  position: relative;
+  float: right;
+  border-radius: 5px;
+}
+
+.notification-wrapper .notification-btn {
+  color: #1976d2;
+  cursor: pointer;
+}
+
+
+.notification-wrapper .notification-content {
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  width: 360px;
+  height: 200px;
+  background-color: #1976d2;
+  z-index:300;
+}
+
+.notification-wrapper .notification-header {
+  padding: 10px;
+  color: white;
+  background-color: #1976d2;
+  font-size: larger;
+}
+
+.notification-wrapper .notification-header .label {
+  display: inline-block;
+  width: 90%;
+  text-align: center;
+  font-weight: 500;
+}
+
+.notification-wrapper .notification-body {
+  padding: 10px;
+  color: #434262;
+  background-color: whitesmoke;
+  font-weight: 500;
+  font-size: large;
+}
+
+.notification-wrapper .notification-body .label {
+  display: inline-block;
+  width: 90%;
+  text-align: center;
+  font-weight: 50;
+  font-size: small;
+}
+
+@media(max-width: 576px)
+{
+  .notification-wrapper .notification-content {
+    position: absolute;
+    top: 40px;
+    right: -45px;
+    width: 340px;
+    height: 200px;
+    background-color: #1976d2;
+    z-index:300;
+  }
+}
+
+
+

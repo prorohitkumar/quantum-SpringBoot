@@ -1,0 +1,74 @@
+global:
+  scrape_interval: 10s # How frequently to scrape targets by default
+
+scrape_configs:
+  - job_name: "prometheus"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["172.31.22.141:9090"]
+
+  - job_name: "api-gateway" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8091"]
+
+  - job_name: "authentication-service" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8085"]
+
+  - job_name: "config-server" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8888"]
+
+  - job_name: "dialogueflow-service" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8088"]
+
+  - job_name: "profile-service" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8090"]
+
+  - job_name: "eureka-server" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8761"]
+
+  - job_name: "project-service" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8086"]
+
+  - job_name: "resource-allocation-c-service" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8088"]
+
+  - job_name: "search-service" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8087"]
+
+  - job_name: "nlp-service" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8092"]
+
+  - job_name: "resource-allocation-engine" # The job name is assigned to scraped metrics by default.
+    metrics_path: "/actuator/prometheus" # The HTTP resource path on which to fetch metrics from targets.
+    scrape_interval: 5s # How frequently to scrape targets from this job.
+    static_configs: # A static_config allows specifying a list of targets and a common label set for them
+      - targets: ["172.31.22.141:8089"]

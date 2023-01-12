@@ -1,0 +1,54 @@
+.mid {
+  align-content: center;
+  justify-content: space-evenly;
+  /* min-width:max-content; */
+  width: 100%;
+  gap: 2px;
+  padding-top: 1%;
+  padding-bottom: 3%;
+  padding-left: 6%;
+  padding-right: 6%;
+  background-image: url("../../assets/images/629567.jpg");
+}
+.row {
+  display: flex;
+  gap: 5px;
+  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+}
+.card {
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  border-radius: 10px;
+  margin: 2rem;
+}
+mat-card:hover {
+  box-shadow: 0 50px 50px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(180deg, rgb(206, 198, 198), rgb(200, 137, 137));
+}
+
+mat-card {
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.85);
+  transition: 0.2s ease-in-out;
+}
+.example-section {
+  margin-bottom: 5%;
+  margin-left: 80%;
+  align-content: space-between;
+  margin-top: auto;
+}
+.background {
+  /* background-image: url("../../assets/images/629567.jpg"); */
+  overflow: hidden !important;
+}
+
+#btn-create-team {
+  width: 150px;
+  font-weight: 500;
+  font-size: larger;
+}
+
+::backdrop{
+  background-color: rgb(42, 165, 48);
+}

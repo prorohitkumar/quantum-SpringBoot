@@ -1,0 +1,104 @@
+<div class="card-contents">
+  <mat-card class="example-card">
+    <div fxLayout="row" fxLayout.xs="column">
+      <!-- <div fxFlex="73%">
+
+      </div>
+
+      <div fxFlex="27%" [style.color]="getColor(project?.projectStatus)">{{getProjectStatus()}}</div>
+    -->
+      <div
+        [style.color]="getColor(project?.projectStatus)"
+        style="text-align: right; width: 100%"
+      >
+        {{ getProjectStatus() }}
+      </div>
+    </div>
+
+    <mat-card-header>
+      <mat-card-title>{{ project?.projectName | titlecase }} </mat-card-title>
+      <mat-card-subtitle
+        >{{ project?.manager.firstName }}
+        {{ project?.manager.lastName }}</mat-card-subtitle
+      >
+    </mat-card-header>
+
+    <mat-card-content
+      style="display: block; text-align: justify; text-justify: inter-word"
+      fxLayout="column"
+    >
+      <p class="text">{{ project?.projectDescription }}</p>
+
+      <div fxLayout="row">
+        <div class="icon-style" fxFlex="50%" matTooltip="Project StartDate">
+          <mat-icon class="icon-styling">date_range</mat-icon>
+          <div>
+            {{ project?.startDate | date: "dd-MM-yyyy" }}
+          </div>
+        </div>
+        <!-- <div style="padding-left: 8rem; "> </span>  -->
+        <div class="icon-style" fxFlex="50%" matTooltip="Project EndDate">
+          <mat-icon class="icon-styling">event</mat-icon>
+          <!-- <div>
+            {{project?.endDate.getDate()+'-'+project?.endDate.getMonth()+'-'+project?.endDate.getFullYear()}}
+          </div> -->
+          <div>
+            {{ project?.endDate | date: "dd-MM-yyyy" }}
+          </div>
+        </div>
+      </div>
+      <!-- <br> -->
+      <div
+        fxLayout="row"
+        fxLayoutGap="6px"
+        class="icon-style"
+        style="vertical-align: middle"
+      >
+        <i
+          class="fas fa-map-marker-alt"
+          style="color: gray; vertical-align: top"
+        ></i>
+        <div>
+          {{ project?.location | titlecase }}
+        </div>
+      </div>
+      <div>
+        <!-- Project Skills: {{skillString()}} -->
+        <span *ngFor="let skill of skillString()"
+          ><mat-chip class="md-chip">{{ skill }}</mat-chip></span
+        >
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- <div fxFlex="70%"></div> -->
+      <div style="text-align: right; width: 100%">
+        <button
+          matTooltip="Create Team"
+          type="submit"
+          *ngIf="!project.teamCreated && isManager"
+          style="text-align: center; border: 0; background-color: white"
+          (click)="createTeam(project.projectId)"
+        >
+          <i
+            style="font-size: large; color: gray"
+            class="fa fa-user-plus"
+            aria-hidden="true"
+          ></i>
+        </button>
+        &nbsp;
+        <button
+          matTooltip="View Project Details"
+          type="submit"
+          style="text-align: center; border: 0; background-color: white"
+          (click)="viewProject(project.projectId)"
+        >
+          <i
+            style="font-size: large; color: gray"
+            class="fa fa-eye"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

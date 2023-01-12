@@ -1,0 +1,85 @@
+{
+    "Data": [
+        {
+            "City": [
+                "Lucknow",
+                "Chandigarh",
+                "Kolkata",
+                "Goa",
+                "Mysore",
+                "Ahmedabad",
+                "Gurgaon",
+                "Noida",
+                "Chennai",
+                "Mumbai",
+                "Pune",
+                "Hyderabad",
+                "Delhi",
+                "Bangalore",
+                "Rampur",
+                "Rajmandry"
+            ],
+            "AgeGroup": [
+                "45-60",
+                "36-45",
+                "28-35",
+                "21-27"
+            ],
+            "Designation": [
+                "Mern Stack",
+                "Mean Stack",
+                "Dev Ops",
+                "Frontend",
+                "Testing",
+                "Backend",
+                "Full Stack"
+            ],
+            "TechnicalSkills": [
+                "Hibernate",
+                "Spring",
+                "Ruby On Rails",
+                "Python",
+                "React",
+                "Graph Database",
+                "SQL",
+                "NoSQL",
+                "C#",
+                "Docker",
+                "Bootstrap",
+                "JavaScript",
+                "Angular",
+                "Java"
+            ],
+            "ProfessionalDomain": [
+                "FMCG",
+                "Engineering and Construction",
+                "Energy",
+                "Automobile",
+                "Banking",
+                "IT",
+                "Retail",
+                "Insurance",
+                "Education"
+            ],
+            "ProfessionalExperience":[
+                "Senior",
+                "Mid-senior",
+                "Intermediate",
+                "Fresher"
+            ],
+            "ProfessionalExperienceInYears":[
+                "1-3",
+                "3-7",
+                "7-12",
+                "12-17"
+            ],
+            "CTC":[
+                "300000-400000",
+                "400000-500000",
+                "500000-600000",
+                "600000-700000"
+            ]
+
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          <!-- Required meta tags -->
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+          <!--My CSS-->
+          <link rel="stylesheet" href="project-creation.component.css">
+          <title>Project Creation Page</title>
+    </head>
+    <body  style="background-image: url(../../assets/images/629567.jpg);">
+                <div style="display: flex; flex-direction: column; width: 90%">
+                <mat-card style="width: 90%; margin: auto; ">
+                    <h1 style="text-align: center;"> Project Name : {{dataArray[0]}}</h1>
+                    <br><br>
+                    <h3 class="mat-h2" style="text-align: center;"> Project Description : <br>  {{dataArray[1]}} </h3>
+                    <br><br>
+                    <div fxLayout="row wrap" fxLayout.xs="column" style="justify-content: space-between;">
+                        <br>
+                        <h3 class="mat-h2"> Project Location : {{dataArray[2]}} </h3>
+                        <br>
+                        <h3 class="mat-h2"> Project Duration : {{dataArray[3]}} </h3>
+                        <br>
+                    </div>
+                    <div fxLayout="row wrap" fxLayout.xs="column" style="justify-content: space-between;">
+                        <br>
+                        <h3 class="mat-h2"> Project Start Date : {{dataArray[4]}} </h3>
+                        <br>
+                        <h3 class="mat-h2"> Project Status: {{project.projectStatus}} </h3>
+                        <br>
+                    </div>
+                    <div fxLayout="row wrap" fxLayout.xs="column" style="justify-content: space-between;">
+                        <br>
+                        <h3 class="mat-h2"> Project Manager Name: {{project.manager.firstName}} {{project.manager.lastName}} </h3>
+                        <br>
+                        <h3 class="mat-h2"> Project Manager Email : {{project.manager.email}} </h3>
+                        <br>
+                    </div>
+
+                </mat-card>
+                <br>
+                <mat-card style= "width: 90%; margin: auto;">
+                    <h3 class="mat-h2" style="text-align: center;"> {{question}} </h3>
+                    <br>
+                    <div *ngIf="dataArray.length != 5">
+                        <div style="width: 100%" [formGroup]="submitForm">
+                            <mat-form-field style="width: 95%;" appearance="outline">
+                                <mat-label for="reply"> Enter the required value </mat-label>
+                                <input matInput id="reply" formControlName="reply" placeholder="Enter the required data" type="text">
+                                <mat-error> Required Fields Cannot Be Empty </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div style="text-align: center">
+                            <button style="text-align: center;" class="btn btn-primary" mat-button (click)="onSubmit()"> Submit </button>
+                        </div>
+                    </div>
+                </mat-card> 
+                </div> 
+    </body>
+</html>

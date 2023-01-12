@@ -1,0 +1,161 @@
+{
+    "expertise": [
+        {
+            "designation": "Full Stack",
+            "noOfResources": 9,
+            "resourcesSuggested": [
+                {
+                    "email": "sumeet@gmail.com",
+                    "name" : "Sumeet Shinde",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "daemon Gupta",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "Shujaat Siddiqui",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "Sunita@gmail.com",
+                    "name" : "Sunita talor",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "Elina@gmail.com",
+                    "name" : "Elina Gilbert",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "Stefan@gmail.com",
+                    "name" : "Stefan Salvatore",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "sumeet@gmail.com",
+                    "name" : "Sumeet Shinde",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "daemon Gupta",
+                    "designation": "Full Stack"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "Shujaat Siddiqui",
+                    "designation": "Full Stack"
+                }
+            ]
+        },
+        {
+            "designation": "Frontend",
+            "noOfResources": 6,
+            "resourcesSuggested": [
+                {
+                    "email": "shivam05@gmail.com",
+                    "name" : "Shivam Tomar",
+                    "designation": "Frontend"
+                },
+                {
+                    "email": "akash@gmail.com",
+                    "name" : "Akash Sharma",
+                    "designation": "Frontend"
+                },
+                {
+                    "email": "Ruchi@gmail.com",
+                    "name" : "Ruchi",
+                    "designation": "Frontend"
+                },
+                {
+                    "email": "Mika@gmail.com",
+                    "name" : "Mika Sharma",
+                    "designation": "Frontend"
+                },
+                {
+                    "email": "Geeta@gmail.com",
+                    "name" : "geeta",
+                    "designation": "Frontend"
+                },
+                {
+                    "email": "Ram@gmail.com",
+                    "name" : "Ram singh",
+                    "designation": "Frontend"
+                }
+            ]
+        },
+        {
+            "designation": "Backend",
+            "noOfResources": 3,
+            "resourcesSuggested": [
+                {
+                    "email": "sumeet@gmail.com",
+                    "name" : "Sumeet Shinde",
+                    "designation": "Backend"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "daemon Gupta",
+                    "designation": "Backend"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "Shujaat Siddiqui",
+                    "designation": "Backend"
+                }
+               
+              
+            ]
+        },
+        {
+            "designation": "Testing",
+            "noOfResources": 3,
+            "resourcesSuggested": [
+                {
+                    "email": "sumeet@gmail.com",
+                    "name" : "Sumeet Shinde",
+                    "designation": "Testing"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "daemon Gupta",
+                    "designation": "Testing"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "Shujaat Siddiqui",
+                    "designation": "Testing"
+                }
+               
+              
+            ]
+        },
+        {
+            "designation": "Mean",
+            "noOfResources": 3,
+            "resourcesSuggested": [
+                {
+                    "email": "sumeet@gmail.com",
+                    "name" : "Sumeet Shinde",
+                    "designation": "Mean"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "daemon Gupta",
+                    "designation": "Mean"
+                },
+                {
+                    "email": "abhishek@gmail.com",
+                    "name" : "Shujaat Siddiqui",
+                    "designation": "Mean"
+                }
+               
+              
+            ]
+        }
+    ]
+}
+

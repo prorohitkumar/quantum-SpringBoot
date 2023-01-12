@@ -1,0 +1,52 @@
+<div style="padding-top: 30px; width: 100%; text-align: center">
+  <div class="ui fluid category search">
+    <div class="ui icon input" [formGroup]="searchForm">
+      <!-- <input class="prompt" type="text" placeholder="Search..." size="50"  #search (keyup)="saveInput(search)"> -->
+
+      <!---
+      <input class="prompt" type="text"[(ngModel)]="filterName" name="filterName" placeholder="Search Projects..." size="60"
+      formControlName="searchbar" (keydown.enter)="searchFun()" id="InputID" ng-required="true"> -->
+      <input
+        class="prompt"
+        type="text"
+        placeholder="Search Projects..."
+        size="150"
+        formControlName="searchbar"
+        (keydown.enter)="searchFun()"
+        #search
+        [(ngModel)]="searchValue"
+        id="InputID"
+        ng-required="true"
+      />
+
+      <!-- <button type="submit" class="clear-Button" (click)="clear()"
+        onclick="document.getElementById('InputID').value = ''">
+        <mat-icon class="clear-search">clear</mat-icon>
+      </button> -->
+      <button type="submit" class="clear-Button" *ngIf="searchValue.length!=0" (click)="clear()">
+        <mat-icon class="clear-search">clear</mat-icon>
+      </button>
+
+      <button type="submit" (click)="searchFun()" *ngIf="searchValue.length!=0" class="search-button">
+        <i style="font-size: larger" class="search icon"></i>
+      </button>
+
+      <button id="mic" (click)="start()"><mat-icon>mic</mat-icon></button>
+
+      <!-- <i class="search icon"></i> -->
+    </div>
+  
+    <div class="results"></div>
+  </div>
+</div>
+
+<div fxLayout="row wrap" style="padding-top: 30px" fxLayout.xs="column">
+  <app-project-card
+    *ngFor="let project of projects"
+    [project]="project"
+    fxFlex="33%"
+    fxFlex.xs="100%"
+  >
+  </app-project-card>
+  <h1 *ngIf="projects == []">No search results found!!!</h1>
+</div>

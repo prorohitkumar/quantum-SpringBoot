@@ -1,0 +1,493 @@
+<body fxLayout="column" fxLayoutAlign="center"
+    style="background-image: url(../../assets/images/629567.jpg); background-repeat:no-repeat; background-size: cover; padding-top: 5%; padding-bottom: 5%;">
+    <!--div>
+        <mat-card fxFlex="90%" fxFelx.xs="100%"  style="margin: auto; background-color: rgba(255, 255, 255, 0.85);">
+            <mat-tab-group animationDuration="0ms" style="margin: auto" >
+                <mat-tab label="Basic Project Details" [formGroup]="basicForm">              
+                    <br><br>
+                    <div fxLayout="column" fxLayoutGap="2%" fxLayoutGap.xs="5%">
+                        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="5%">
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="projectName"> Project Name </mat-label> 
+                                <input matInput id="projectName" formControlName="projectName" placeholder="Enter the project name" type="text">
+                                <mat-error> Project Name cannot be empty. </mat-error>
+                            </mat-form-field>
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="location"> Project Location </mat-label> 
+                                <input matInput id="location" formControlName="location" placeholder="Enter the project location" type="text">
+                                <mat-error> Project Location cannot be empty. </mat-error>
+                            </mat-form-field>                
+                        </div>
+                        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="5%">     
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="startDate"> Project Start Date </mat-label>
+                                <input matInput id="startDate" formControlName="startDate" placeholder="Enter the project start date" type="date">
+                                <mat-error> Project Start Date cannot be empty. </mat-error>
+                            </mat-form-field>
+                            <mat-form-field  fxFlex="50%" appearance="outline">
+                                <mat-label for="durationInWeeks"> Project Duration </mat-label>
+                                <input matInput id="durationInWeeks" formControlName="durationInWeeks" placeholder="Enter the project duration" type="number">
+                                <mat-error> Project Duration cannot be empty or have alphabets or symbols inside </mat-error>
+                            </mat-form-field>         
+                        </div>
+                        <div>
+                            <mat-form-field fxFlex="100%" appearance="outline">
+                                <mat-label for="projectDescription"> Project Description </mat-label>
+                                <textarea matInput id="projectDescription" formControlName="projectDescription" placeholder="Enter the project Description" type="text"></textarea>
+                                <mat-error> Project Description cannot be empty. </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-card fxFlex="57%" fxFlex.xs="75%" style="background-color: rgb(255, 255, 255, 0) ; box-shadow: none !important">
+                        <button class="btn btn-success" mat-raised-button style=" padding:2%; float: right; color: white;" (click)="addProject()" [disabled]="!basicForm.valid"><h5>Add Project</h5> </button>
+                    </mat-card>
+                    <br><br>                   
+                </mat-tab>
+                <mat-tab label="Project Expertise Details" [formGroup]="expertiseForm">
+                    <br><br>
+                    <div fxLayout="column" fxLayoutGap="2%" fxLayoutGap.xs="5%">
+                        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="5%">
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="noOfResources"> No. of Resources </mat-label> 
+                                <input matInput id="noOfResources" formControlName="noOfResources" placeholder="Enter the number of resources wanted for expertise" type="number">
+                                <mat-error> Number of Resources cannot be empty or Less than One. </mat-error>
+                            </mat-form-field>
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="designation"> Project Designation </mat-label> 
+                                <input matInput id="designation" formControlName="designation" placeholder="Enter the designation required for the expertise" type="text">
+                                <mat-error> Resource Designation cannot be empty. </mat-error>
+                            </mat-form-field>
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="domainExperience"> Project Domain </mat-label>
+                                <input matInput id="domainExperience" formControlName="domainExperience" placeholder="Enter the project domain needed for the expertise" type="text">
+                                <mat-error> Project Domain cannot be Empty </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%">
+                            <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="0%">
+                                <mat-form-field fxFlex="100%" appearance="outline">
+                                    <mat-label for="minAge"> Minimum Age Needed</mat-label> 
+                                    <input matInput id="minAge" formControlName="minAge" placeholder="Enter the minimum age needed for the expertise" type="number">
+                                    <mat-error> Minimum Age cannot be empty or less than 20 </mat-error>
+                                </mat-form-field>
+                                <mat-form-field  fxFlex="100%" appearance="outline">
+                                    <mat-label for="maxAge"> Maximum Age Allowed </mat-label> 
+                                    <input matInput id="maxAge" formControlName="maxAge" placeholder="Enter the maximum experience allowed for the expertise" type="number">
+                                    <mat-error> Maximum Age cannot be empty or more than 60</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="0%">
+                                <mat-form-field fxFlex="100%" appearance="outline">
+                                    <mat-label for="minExperienceNeeded"> Minimum Experience Needed </mat-label>
+                                    <input matInput id="minExperienceNeeded" formControlName="minExperienceNeeded" placeholder="Enter the minimum experience needed for the expertise" type="number">
+                                    <mat-error> Minimum Experience cannot be empty or less than 0 </mat-error>
+                                </mat-form-field>
+                                <mat-form-field  fxFlex="100%" appearance="outline">
+                                    <mat-label for="maxExperienceNeeded"> Maximum Experience Allowed </mat-label>
+                                    <input matInput id="maxExperienceNeeded" formControlName="maxExperienceNeeded" placeholder="Enter the maximum experience allowed for the expertise" type="number">
+                                    <mat-error> Maximum Experience cannot be Empty or less than 0 </mat-error>
+                                </mat-form-field>
+                            </div>
+                                <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="0%">
+                                    <mat-form-field fxFlex="100%" appearance="outline">
+                                        <mat-label for="minCTC"> Minimum CTC Needed </mat-label> 
+                                        <input matInput id="minCTC" formControlName="minCTC" placeholder="Enter the minimum CTC needed for the expertise" type="number">
+                                        <mat-error> Minimum CTC cannot be empty or less than 0 </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field  fxFlex="100%" appearance="outline">
+                                        <mat-label for="maxCTC"> Maximum CTC Allowed </mat-label>
+                                        <input matInput id="maxCTC" formControlName="maxCTC" placeholder="Enter the maximum CTC allowed for the expertise" type="number">
+                                        <mat-error> Maximum Experience cannot be Empty or less than 0 </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%" fxLayoutGap.xs="5%">
+                                <mat-card style="background-color: rgb(255, 255, 255, 0.25);" fxFlex="50%" appearance="outline" fxLayout="row" fxLayout.xs="column"  fxLayout.sm="column" fxLayoutGap="2%">
+                                    <mat-form-field fxFlex="50%" appearance="outline">
+                                        <mat-label for="skillName"> Enter Skill Name </mat-label>
+                                        <input matInput id="skillName" formControlName="skillName" placeholder="Enter the skill name" type="text">
+                                        <mat-error> Skill Name is Empty </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field  fxFlex="50%" appearance="outline">
+                                        <mat-label for="skillLevel"> Select Skill Level </mat-label>
+                                        <mat-select id="skillLevel" formControlName="skillLevel" name="skillLevel">
+                                            <mat-option value="BASIC"> BASIC </mat-option>
+                                            <mat-option value="INTERMEDIATE"> INTERMEDIATE </mat-option>
+                                            <mat-option value="ADVANCE"> ADVANCE </mat-option>
+                                        </mat-select>
+                                        <mat-error> Skill Level is Empty </mat-error>
+                                    </mat-form-field>
+                                    <button mat-raised-button class="btn btn-primary" (click)="addSkill()" > <mat-icon>add</mat-icon> </button>
+                                </mat-card>
+                                <mat-card style="background-color: rgb(255, 255, 255, 0); box-shadow: none !important;">
+                                    <mat-chip-list aria-label="Skill selection">
+                                        <div *ngFor="let skill of expertise.skills">
+                                            <div *ngIf=" skill.level === basic">
+                                                <mat-chip [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: green;">
+                                                    {{skill.skillName}}
+                                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                </mat-chip>
+                                            </div>
+                                            <div *ngIf="skill.level === intermediate">
+                                            <mat-chip  [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: yellow;">
+                                                {{skill.skillName}}
+                                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                </mat-chip>
+                                            </div>
+                                            <div *ngIf="skill.level === advance">
+                                                <mat-chip  [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: red;">
+                                                    {{skill.skillName}}
+                                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                </mat-chip>
+                                            </div>
+                                        </div>
+                                    </mat-chip-list>
+                                </mat-card>
+                            </div>
+                        </div>
+                    <mat-card fxFlex="57%" fxFlex.xs="75%" style="background-color: rgb(255, 255, 255, 0) ; box-shadow: none !important">
+                        <button class="btn btn-success" mat-raised-button style=" padding:2%; float: right; color: white;" (click)="addExpertise()" [disabled]="!expertiseForm.valid"><h5>Add Expertise</h5> </button>
+                    </mat-card>
+                    <br><br>  
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+    </div-->
+    <div>
+        <mat-card fxFlex="90%" fxFelx.xs="100%" style="margin: auto; background-color: rgba(255, 255, 255, 0.85);"
+            [formGroup]="projectForm">
+            <mat-tab-group #tabGroup animationDuration="0ms" style="margin: auto">
+                <mat-tab label="Basic Project Details">
+                    <br><br>
+                    <div fxLayout="column" fxLayoutGap="2%" fxLayoutGap.xs="5%">
+                        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="5%">
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="projectName"> Project Name </mat-label>
+                                <input matInput id="projectName" formControlName="projectName"
+                                    placeholder="Enter the project name" type="text">
+                                <mat-error> Project Name cannot be empty. </mat-error>
+                            </mat-form-field>
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="location"> Project Location </mat-label>
+                                <!-- <input matInput id="location" formControlName="location" placeholder="Enter the project location" type="text"> -->
+                                <mat-select id="location" formControlName="location" name="location"
+                                    placeholder="Enter the project location">
+                                    <mat-option *ngFor="let option of options" value={{option}}> {{option}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error> Project Location cannot be empty. </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="5%">
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="startDate"> Project Start Date </mat-label>
+                                <input matInput id="startDate" formControlName="startDate"
+                                    placeholder="Enter the project start date" type="date">
+                                <mat-error> Project Start Date cannot be empty. </mat-error>
+                            </mat-form-field>
+                            <mat-form-field fxFlex="50%" appearance="outline">
+                                <mat-label for="durationInWeeks"> Project Duration </mat-label>
+                                <input matInput id="durationInWeeks" formControlName="durationInWeeks"
+                                    placeholder="Enter the project duration (in weeks)" type="number">
+                                <mat-error> Project Duration cannot be empty or have alphabets or symbols inside
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field fxFlex="100%" appearance="outline">
+                                <mat-label for="projectDescription"> Project Description </mat-label>
+                                <textarea matInput id="projectDescription" formControlName="projectDescription"
+                                    placeholder="Enter the project Description" type="text"></textarea>
+                                <mat-error> Project Description cannot be empty. </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-card fxFlex="100%" fxFlex.xs="75%"
+                        style="background-color: rgb(255, 255, 255, 0) ; box-shadow: none !important">
+                        <!-- <button class="btn btn-success" mat-raised-button style=" padding:2%; float: right; color: white;" (click)="addProject()" [disabled]="!projectForm.valid"><h5>Add Project</h5> </button> -->
+
+                        <!-- <button mat-button (click)="tabGroup.selectedIndex=1">Next</button> -->
+                        <button class="btn btn-primary" mat-raised-button
+                            style=" padding:1%; float: right; color: white; width:100px; background-color: #1976d2;"
+                            (click)="tabGroup.selectedIndex=1">
+                            <h5>Next</h5>
+                        </button>
+
+
+                    </mat-card>
+                    <br><br>
+                </mat-tab>
+                <mat-tab label="Project Expertise Details">
+                    <br><br>
+                    <div *ngIf="showExpertiseFirst" style="border: 1px solid black;">
+                        <div formArrayName="expertise" *ngFor="let expertise of expertiseControls; let i=index">
+                            <div fxFlex="row" formGroupName="{{i}}">
+                                <br><br>
+                                <div fxLayout="column" fxLayout.xs="row" fxLayout.sm="column" fxLayoutGap="2%"
+                                    style="margin-left: 12px; margin-right: 12px;">
+                                    <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                                        fxLayoutGap="2%">
+                                        <mat-form-field fxFlex="100%" appearance="outline">
+                                            <mat-label for="noOfResources"> No. of Resources </mat-label>
+                                            <input matInput id="noOfResources" formControlName="noOfResources"
+                                                placeholder="Enter the number of resources wanted for expertise"
+                                                type="number">
+                                            <mat-error> Number of Resources cannot be empty or Less than One.
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field fxFlex="100%" appearance="outline">
+                                            <mat-label for="designation"> Project Designation </mat-label>
+                                            <!-- <input matInput id="designation" formControlName="designation" placeholder="Enter the designation required for the expertise" type="text"> -->
+                                            <mat-select id="designation" formControlName="designation"
+                                                name="designation">
+                                                <mat-option *ngFor="let option of desoption" value={{option}}>
+                                                    {{option}} </mat-option>
+                                            </mat-select>
+                                            <mat-error> Resource Designation cannot be empty. </mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field fxFlex="100%" appearance="outline">
+                                            <mat-label for="domainExperience"> Project Domain </mat-label>
+                                            <!-- <input matInput id="domainExperience" formControlName="domainExperience" placeholder="Enter the project domain needed for the expertise" type="text"> -->
+                                            <mat-select id="domainExperience" formControlName="domainExperience"
+                                                name="domainExperience">
+                                                <mat-option *ngFor="let option of profOptions" value={{option}}>
+                                                    {{option}} </mat-option>
+                                            </mat-select>
+                                            <mat-error> Project Domain cannot be Empty </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%">
+                                        <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                                            fxLayoutGap="0%">
+                                            <mat-form-field fxFlex="100%" appearance="outline">
+                                                <mat-label for="age"> Age Range Needed</mat-label>
+                                                <!-- <input matInput id="age" formControlName="age" placeholder="Enter the age range needed for the expertise" type="text"> -->
+                                                <mat-select id="age" formControlName="age" name="age">
+                                                    <mat-option *ngFor="let option of ageGroup" value={{option}}>
+                                                        {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> Age range cannot be empty or less than 20 </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                                            fxLayoutGap="0%">
+                                            <mat-form-field fxFlex="100%" appearance="outline">
+                                                <mat-label for="experienceNeeded"> Experience Range Needed </mat-label>
+                                                <!-- <input matInput id="experienceNeeded" formControlName="experienceNeeded" placeholder="Enter the experience range needed for the expertise" type="text"> -->
+                                                <mat-select id="experienceNeeded" formControlName="experienceNeeded"
+                                                    name="experienceNeeded">
+                                                    <mat-option *ngFor="let option of experienceInYears"
+                                                        value={{option}}> {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> Experience range cannot be empty or less than 0 </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                                            fxLayoutGap="0%">
+                                            <mat-form-field fxFlex="100%" appearance="outline">
+                                                <mat-label for="ctc"> CTC Range Needed </mat-label>
+                                                <!-- <input matInput id="ctc" formControlName="ctc" placeholder="Enter the CTC range needed for the expertise" type="text"> -->
+                                                <mat-select id="ctc" formControlName="ctc" name="ctc">
+                                                    <mat-option *ngFor="let option of CtcRange" value={{option}}>
+                                                        {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> CTC range cannot be empty or less than 0 </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%"
+                                        fxLayoutGap.xs="5%">
+                                        <mat-card style="background-color: rgb(255, 255, 255, 0.25);" fxFlex="50%"
+                                            appearance="outline" fxLayout="row" fxLayout.xs="column"
+                                            fxLayout.sm="column" fxLayoutGap="2%">
+                                            <mat-form-field fxFlex="50%" appearance="outline">
+                                                <mat-label for="skillName"> Enter Skill Name </mat-label>
+                                                <!-- <input matInput id="skillName" formControlName="skillName" placeholder="Enter the skill name" type="text"> -->
+                                                <mat-select id="skillName" formControlName="skillName" name="skillName">
+                                                    <mat-option *ngFor="let option of skilloptions" value={{option}}>
+                                                        {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> Skill Name is Empty </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field fxFlex="50%" appearance="outline">
+                                                <mat-label for="skillLevel"> Select Skill Level </mat-label>
+                                                <mat-select id="skillLevel" formControlName="skillLevel"
+                                                    name="skillLevel">
+                                                    <mat-option value="BASIC"> BASIC </mat-option>
+                                                    <mat-option value="INTERMEDIATE"> INTERMEDIATE </mat-option>
+                                                    <mat-option value="ADVANCE"> ADVANCE </mat-option>
+                                                </mat-select>
+                                                <mat-error> Skill Level is Empty </mat-error>
+                                            </mat-form-field>
+                                            <button mat-raised-button class="btn btn-primary" (click)="addSkill()"
+                                                style="height: 53px; ">
+                                                <mat-icon>add</mat-icon>
+                                            </button>
+                                        </mat-card>
+
+                                    </div>
+                                </div>
+                                <br><br>
+                                <!-- <mat-icon (click)="removeExpertise(i)">cancel</mat-icon> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!showExpertiseFirst">
+                        <div formArrayName="expertise" *ngFor="let expertise of expertiseControls; let i=index"
+                            style="margin-top: 20px;">
+                            <div fxFlex="row" formGroupName="{{i}}" style="border: 1px solid black;">
+                                <br><br>
+                                <div fxLayout="column" fxLayout.xs="row" fxLayout.sm="column" fxLayoutGap="2%"
+                                    style="margin-left: 12px; margin-right: 12px;">
+                                    <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                                        fxLayoutGap="2%">
+                                        <mat-form-field fxFlex="100%" appearance="outline">
+                                            <mat-label for="noOfResources"> No. of Resources </mat-label>
+                                            <input matInput id="noOfResources" formControlName="noOfResources"
+                                                placeholder="Enter the number of resources wanted for expertise"
+                                                type="number">
+                                            <mat-error> Number of Resources cannot be empty or Less than One.
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field fxFlex="100%" appearance="outline">
+                                            <mat-label for="designation"> Project Designation </mat-label>
+                                            <!-- <input matInput id="designation" formControlName="designation" placeholder="Enter the designation required for the expertise" type="text"> -->
+                                            <mat-select id="designation" formControlName="designation"
+                                                name="designation">
+                                                <mat-option *ngFor="let option of desoption" value={{option}}>
+                                                    {{option}} </mat-option>
+                                            </mat-select>
+                                            <mat-error> Resource Designation cannot be empty. </mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field fxFlex="100%" appearance="outline">
+                                            <mat-label for="domainExperience"> Project Domain </mat-label>
+                                            <!-- <input matInput id="domainExperience" formControlName="domainExperience" placeholder="Enter the project domain needed for the expertise" type="text"> -->
+                                            <mat-select id="domainExperience" formControlName="domainExperience"
+                                                name="domainExperience">
+                                                <mat-option *ngFor="let option of profOptions" value={{option}}>
+                                                    {{option}} </mat-option>
+                                            </mat-select>
+                                            <mat-error> Project Domain cannot be Empty </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%">
+                                        <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                                            fxLayoutGap="0%">
+                                            <mat-form-field fxFlex="100%" appearance="outline">
+                                                <mat-label for="age"> Age Range Needed</mat-label>
+                                                <!-- <input matInput id="age" formControlName="age" placeholder="Enter the age range needed for the expertise" type="text"> -->
+                                                <mat-select id="age" formControlName="age" name="age">
+                                                    <mat-option *ngFor="let option of ageGroup" value={{option}}>
+                                                        {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> Age range cannot be empty or less than 20 </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                                            fxLayoutGap="0%">
+                                            <mat-form-field fxFlex="100%" appearance="outline">
+                                                <mat-label for="experienceNeeded"> Experience Range Needed </mat-label>
+                                                <!-- <input matInput id="experienceNeeded" formControlName="experienceNeeded" placeholder="Enter the experience range needed for the expertise" type="text"> -->
+                                                <mat-select id="experienceNeeded" formControlName="experienceNeeded"
+                                                    name="experienceNeeded">
+                                                    <mat-option *ngFor="let option of experienceInYears"
+                                                        value={{option}}> {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> Experience range cannot be empty or less than 0 </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="33%" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+                                            fxLayoutGap="0%">
+                                            <mat-form-field fxFlex="100%" appearance="outline">
+                                                <mat-label for="ctc"> CTC Range Needed </mat-label>
+                                                <!-- <input matInput id="ctc" formControlName="ctc" placeholder="Enter the CTC range needed for the expertise" type="text"> -->
+                                                <mat-select id="ctc" formControlName="ctc" name="ctc">
+                                                    <mat-option *ngFor="let option of CtcRange" value={{option}}>
+                                                        {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> CTC range cannot be empty or less than 0 </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%"
+                                        fxLayoutGap.xs="5%">
+                                        <mat-card style="background-color: rgb(255, 255, 255, 0.25);" fxFlex="50%"
+                                            appearance="outline" fxLayout="row" fxLayout.xs="column"
+                                            fxLayout.sm="column" fxLayoutGap="2%">
+                                            <mat-form-field fxFlex="50%" appearance="outline">
+                                                <mat-label for="skillName"> Enter Skill Name </mat-label>
+                                                <!-- <input matInput id="skillName" formControlName="skillName" placeholder="Enter the skill name" type="text"> -->
+                                                <mat-select id="skillName" formControlName="skillName" name="skillName">
+                                                    <mat-option *ngFor="let option of skilloptions" value={{option}}>
+                                                        {{option}} </mat-option>
+                                                </mat-select>
+                                                <mat-error> Skill Name is Empty </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field fxFlex="50%" appearance="outline">
+                                                <mat-label for="skillLevel"> Select Skill Level </mat-label>
+                                                <mat-select id="skillLevel" formControlName="skillLevel"
+                                                    name="skillLevel">
+                                                    <mat-option value="BASIC"> BASIC </mat-option>
+                                                    <mat-option value="INTERMEDIATE"> INTERMEDIATE </mat-option>
+                                                    <mat-option value="ADVANCE"> ADVANCE </mat-option>
+                                                </mat-select>
+                                                <mat-error> Skill Level is Empty </mat-error>
+                                            </mat-form-field>
+                                            <button mat-raised-button class="btn btn-primary" (click)="addSkill()" style="height: 53px; ">
+                                                <mat-icon>add</mat-icon>
+                                            </button>
+                                        </mat-card>
+                                    </div>
+                                </div>
+                                <br><br>
+                                <!-- <mat-icon (click)="removeExpertise(i)">cancel</mat-icon> -->
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                   
+                    <div style="margin-left: 88%;">  <button style="color: blue;" mat-raised-button (click)="addExpertise(expertiseIndex)">Add
+                            Expertise</button> </div><br>
+                        <div fxFlex="30%"></div>
+                        <div fxFlex="70%">  <button class="btn btn-success" mat-raised-button
+                                style=" padding:2%; float: right; color: white; width: 250px; margin-right: 100px; background-color:#1976d2 ;" (click)="addProject()"
+                                [disabled]="!projectForm.valid">
+                                <h5>Add Project</h5>
+                            </button></div><br>
+
+                   
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+        <div>
+            <mat-card style="background-color: rgb(255, 255, 255, 0.85); box-shadow: none !important;">
+                <mat-card-header> Total Skills Required For Project </mat-card-header>
+                <mat-chip-list class="mat-chip-list-stacked"  aria-label="Skill selection">
+                    <div *ngFor="let skill of skillList">
+                        <div *ngIf=" skill.level === basic">
+                            <mat-chip [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)"
+                                style="background-color: green;">
+                                {{skill.skillName}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                        </div>
+                        <div *ngIf="skill.level === intermediate">
+                            <mat-chip [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)"
+                                style="background-color: yellow;">
+                                {{skill.skillName}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                        </div>
+                        <div *ngIf="skill.level === advance">
+                            <mat-chip [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)"
+                                style="background-color: red;">
+                                {{skill.skillName}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                        </div>
+                    </div>
+                </mat-chip-list>
+            </mat-card>
+        </div>
+    </div>
+</body>

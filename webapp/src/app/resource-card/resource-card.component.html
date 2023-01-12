@@ -1,0 +1,29 @@
+<div *ngIf='expertise?.designation == resource?.designation'>
+  <mat-card class="profile-card">
+    <div>
+      <div fxLayout="row" fxFlex="100%">
+        <div fxLayout="column" fxFlex="90%">
+          <mat-card-title style="white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;" title="{{resource?.name}}">{{resource?.name}}
+          </mat-card-title>
+          <mat-card-subtitle>{{resource?.email}}</mat-card-subtitle>
+        </div>
+        <div>
+          <button style="border:hidden;background: none;"
+            [disabled]="expertise?.resourcesSuggested.length==expertise?.noOfResources/3" (click)=deleteDev(i,j)>
+            <mat-icon matTooltip="click to next resource" matTooltipPosition="above">close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <mat-card-content fxLayout="column" fxLayoutGap="4%">
+      <div>Experience- {{userProfile?.experienceInYrs}} years</div>
+      <div>CTC- {{userProfile?.ctc}}</div>
+      <div>
+        <mat-chip class="md-chip" *ngFor="let skills of userProfile?.skills"><span>{{skills?.skillName}} &nbsp;</span>
+        </mat-chip>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

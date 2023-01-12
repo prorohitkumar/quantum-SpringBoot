@@ -1,0 +1,225 @@
+version: "3.5"
+services:
+  webapp:
+    build: webapp/
+    network_mode: host
+    container_name: webapp
+    restart: always
+
+  eureka-server:
+    build: eureka-server/
+    network_mode: host
+    container_name: eureka_server_container
+    restart: always
+
+  api-gateway:
+    build: api-gateway/
+    network_mode: host
+    container_name: api_gateway_container
+    depends_on:
+      - eureka-server
+    restart: always
+
+  neo4j:
+    image: neo4j:4.2.3
+    volumes:
+      - ./data/neo4j-data/data:/data
+      - ./data/neo4j-data/logs:/logs
+      - ./data/neo4j-data/import:/var/lib/neo4j/import
+    container_name: neo4j_container
+    environment:
+      NEO4J_AUTH: neo4j/admin
+    ports:
+      - 7474:7474
+      - 7687:7687
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    volumes:
+      - ./data/rabbitmq-data:/var/lib/rabbitmq
+    container_name: rabbitmq_container
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    restart: always
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./data/elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    restart: always
+
+  mysql:
+    image: mysql:8.0.22
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./data/mysql-data:/var/lib/mysql
+
+
+  mongodb:
+    image: mongo:4.4.2-bionic
+    volumes:
+      - ./data/mongo-data:/data/db/
+    container_name: mongo_container
+    ports:
+      - 27017:27017
+    restart: always
+
+  authentication-service:
+    build: authentication-service/
+    network_mode: host
+    container_name: authentication_service_container
+    environment:
+      MYSQL_PASSWORD: password
+      RABBITMQ_PORT: 5672
+    depends_on:
+      - mysql
+      - rabbitmq
+    restart: always
+
+  profile-service:
+    build: profile-service/
+    network_mode: host
+    container_name: profile_service_container
+    environment:
+      RABBITMQ_PORT: 5672
+    depends_on:
+      - mongodb
+      - rabbitmq
+    restart: always
+
+  project-service:
+    build: project-service/
+    network_mode: host
+    container_name: project_service_container
+    environment:
+      RABBITMQ_PORT: 5672
+    depends_on:
+      - mongodb
+      - rabbitmq
+    restart: always
+
+  resource-allocation-c-service:
+    build: resource-allocation-c-service/
+    network_mode: host
+    container_name: resource_allocation_c_service_container
+    environment:
+      RABBITMQ_PORT: 5672
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: admin
+    depends_on:
+      - neo4j
+      - rabbitmq
+    restart: always
+
+  resource-allocation-engine:
+    build: resource-allocation-engine/
+    network_mode: host
+    container_name: resource_allocation_engine_container
+    environment:
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: admin
+    depends_on:
+      - neo4j
+    restart: always
+
+  search-service:
+    build: search-service/
+    network_mode: host
+    container_name: search_service_container
+    environment:
+      RABBITMQ_PORT: 5672
+    depends_on:
+      - elasticsearch
+      - rabbitmq
+    restart: always
+
+  nlp-service:
+    build: nlp-service/
+    network_mode: host
+    container_name: nlp_service_container
+    restart: always
+
+  dialogueflow-service:
+    build: dialogueflow-service/
+    network_mode: host
+    container_name: dialogueflow_service_container
+    restart: always
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    restart: always
+
+  kibana:
+    image: kibana:7.6.2
+    links:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    restart: always
+
+  logstash:
+    image: logstash:7.10.1
+    environment:
+      - STDOUT=true
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+      - kibana
+    command: 'logstash -e "input { udp { port => 5000 } } output { elasticsearch { hosts =>     elasticsearch } }"'
+    restart: always
+
+  logspout:
+    image: gliderlabs/logspout:master
+    command: 'udp://logstash:5000'
+    links:
+      - logstash
+    volumes:
+      - '/var/run/docker.sock:/tmp/docker.sock'
+    depends_on:
+      - elasticsearch
+      - logstash
+      - kibana
+    restart: always

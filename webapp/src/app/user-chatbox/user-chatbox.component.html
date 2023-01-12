@@ -1,0 +1,169 @@
+<body style="background-image: url(../../assets/images/629567.jpg);">
+<br><br>
+<div style="text-align: center;"><h1 style="color: antiquewhite;"> Welcome to User Profile Chatbot </h1></div>
+<br><br>
+<div>
+    <div fxLayout="column" fxFlex="80%" fxFelx.xs="100%" style="margin: auto;" >
+        <div>
+            <mat-card fxFlex="90%" fxFlex.xs="100%" style="margin: auto; background-color: rgba(255, 255, 255, 0.85);" >
+                <div style="border: 1px solid black; border-radius: 5px; height: 400px; background-color: whitesmoke; overflow-y: auto; overflow-x: hidden;">
+                    <mat-chip-list class="mat-chip-list-stacked" fxFlex="100%" style="align-self: flex-end;" >
+                        <div style="width: 100%; padding-left: 1%; padding-right:1%; padding-bottom: 1%"  *ngFor="let message of messages">
+                            <mat-chip class="bot-chip" style="width: fit-content;"  *ngIf="message.id==true"> {{message.text}} </mat-chip>
+                            <mat-chip class="user-chip" style="width: fit-content;" *ngIf="message.id==false"> {{message.text}} </mat-chip>
+                        </div>    
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="genderChecker==false && statusChecker==false && phoneChecker==false && desigChecker==false && domainChecker==false && skillChecker==false && submitChecker==false" fxLayout="row" fxLayout.xs="column" fxLayoutAlign=" space-between center" style=" height: 0%;" [formGroup]="chatboxForm">
+                    <div style="margin-left: auto; margin-right: auto; width: 100%">
+                    <mat-form-field fxFlex="100%" appearance="outline">
+                        <input matInput id="chatInput" fxFlex="100%" placeholder="You can chat with our Profile Bot through here" formControlName="chatInput" type="text">
+                    </mat-form-field>
+                    </div>
+                    <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center" style=" margin-top:0.5%; margin-left:auto; margin-right:auto; height: fit-content; width: fit-content;">
+                        <button fxFlex="10%" mat-raised-button class="btn btn-primary" style="padding: 3%;" [disabled]="!chatboxForm.valid" (click)="sendMessage()"> Enter  </button>
+                    </div>    
+                </div>
+                <div *ngIf="phoneChecker==true" fxLayout="row" fxLayout.xs="column" fxLayoutAlign=" space-between center" style=" height: 0%;" [formGroup]="phoneForm">
+                    <div style="margin-left: auto; margin-right: auto; width: 100%">
+                    <mat-form-field fxFlex="100%" appearance="outline">
+                        <input matInput id="phoneInput" fxFlex="100%" placeholder="You can chat with our Profile Bot through here" formControlName="phoneInput" type="number">
+                        <mat-error> Phone Number must have ten digits </mat-error>
+                    </mat-form-field>
+                    </div>
+                    <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center" style=" margin-top:0.5%; margin-left:auto; margin-right:auto; height: fit-content; width: fit-content;">
+                        <button fxFlex="10%" mat-raised-button class="btn btn-primary" style="padding: 3%;" [disabled]="!phoneForm.valid" (click)="sendMessage()"> Enter  </button>
+                    </div>    
+                </div>
+                <div *ngIf="desigChecker==true" fxLayout="row" fxLayout.xs="column" fxLayoutAlign=" space-between center" style=" height: 0%;" [formGroup]="desigForm">
+                    <div style="margin-left: auto; margin-right: auto; width: 100%">
+                    <mat-form-field fxFlex="100%" appearance="outline">
+                        <mat-select id="desigInput" fxFlex="100%" placeholder="You can chat with our Profile Bot through here" formControlName="desigInput" name="desigInput">
+                            <mat-option *ngFor="let option of options" value={{option}}> {{option}} </mat-option>
+                        </mat-select>    
+                    </mat-form-field>
+                    </div>
+                    <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center" style=" margin-top:0.5%; margin-left:auto; margin-right:auto; height: fit-content; width: fit-content;">
+                        <button fxFlex="10%" mat-raised-button class="btn btn-primary" style="padding: 3%;" [disabled]="!desigForm.valid" (click)="sendMessage()"> Enter  </button>
+                    </div>    
+                </div>
+                <div *ngIf="genderChecker==true" fxLayout="column" fxLayout.xs="column" fxLayoutAlign=" space-between center" style=" width: 100%; height: 0%; margin: auto;">
+                    <br>
+                    <div style="text-align: center;" class="mat-h2"> Please choose your gender from the given list </div>
+                    <mat-chip-list style="margin: auto;">
+                        <mat-chip class="btn btn-primary" style="background-color: #1976d2;" (click)="selectGender('MALE')"> MALE </mat-chip> 
+                        <mat-chip class="btn btn-primary" style="background-color: #1976d2;" (click)="selectGender('FEMALE')"> FEMALE </mat-chip> 
+                        <mat-chip class="btn btn-primary" style="background-color: #1976d2;" (click)="selectGender('OTHER')"> OTHER </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="statusChecker==true" fxLayout="column" fxLayout.xs="column" fxLayoutAlign=" space-between center" style=" width: 100%; height: 0%; margin: auto;">
+                    <br>
+                    <div style="text-align: center;" class="mat-h2"> Please select TRUE or FALSE </div>
+                    <mat-chip-list style="margin: auto;">
+                        <mat-chip class="btn btn-primary" style="background-color: #1976d2;" (click)="selectStatus('TRUE')"> TRUE </mat-chip> 
+                        <mat-chip class="btn btn-primary" style="background-color: #1976d2;" (click)="selectStatus('FALSE')"> FALSE </mat-chip> 
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="domainChecker==true">
+                    <div fxLayoutGap="2%">
+                        <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%" fxLayoutGap.xs="5%" [formGroup]="domainForm">
+                            <mat-card style="background-color: rgb(255, 255, 255, 0.25);" fxFlex="50%" appearance="outline" fxLayout="row" fxLayout.xs="column"  fxLayout.sm="column" fxLayoutGap="2%">
+                                <mat-form-field fxFlex="50%" appearance="outline">
+                                    <mat-label for="domainName"> Select Domain Name </mat-label>
+                                    <mat-select id="domainName" formControlName="domainName" name="domainName">
+                                        <mat-option *ngFor="let option of options " value={{option}}> {{option}} </mat-option>
+                                    </mat-select>
+                                    <mat-error> Domain Name is Empty </mat-error>
+                                </mat-form-field>
+                                <mat-form-field  fxFlex="50%" appearance="outline">
+                                    <mat-label for="domainNumber"> Enter Domain Experience (in Years) </mat-label>
+                                    <input matInput id="domainNumber" formControlName="domainNumber" name="domainNumber" type="number">
+                                    <mat-error> Domain Experience cannot be less than 0 </mat-error>
+                                </mat-form-field>
+                                <button matTooltip="Add a new Domain" mat-raised-button class="btn btn-primary" (click)="addDomain()" style="height: 53px; "> <mat-icon>add</mat-icon> </button>
+                                <button matTooltip="Enter the Domains to the Profile Bot" mat-raised-button class="btn btn-primary" style="width:fit-content; height: 53px" [disabled]="!domainForm.valid" (click)="sendMessage()"> Enter  </button>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <br>
+                    <div>     
+                            <mat-chip-list aria-label="Domain selection">
+                                <mat-chip *ngFor="let domain of domains" [selectable]="true" [removable]="true" (removed)="removeDomain(domain)">
+                                    {{domain.domainName}} Domain - Experience: {{domain.domainExperienceInYrs}} years
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                            </mat-chip-list>
+                    </div>  
+                </div>
+                <div *ngIf="skillChecker==true">
+                    <div fxLayout="column" fxLayoutGap="2%">
+                        <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="2%" fxLayoutGap.xs="5%" [formGroup]="skillForm">
+                            <mat-card style="background-color: rgb(255, 255, 255, 0.25);" fxFlex="50%" appearance="outline" fxLayout="row" fxLayout.xs="column"  fxLayout.sm="column" fxLayoutGap="2%">
+                                <mat-form-field fxFlex="50%" appearance="outline">
+                                    <mat-label for="skillName"> Select Skill Name </mat-label>
+                                    <mat-select id="skillname" formControlName="skillName" name="skillName">
+                                        <mat-option *ngFor="let option of options " value={{option}}> {{option}} </mat-option>
+                                    </mat-select>
+                                    <mat-error> Skill Name is Empty </mat-error>
+                                </mat-form-field>
+                                <mat-form-field  fxFlex="50%" appearance="outline">
+                                    <mat-label for="skillLevel"> Select Skill Level </mat-label>
+                                    <mat-select id="skillLevel" formControlName="skillLevel" name="skillLevel">
+                                        <mat-option value="BASIC"> BASIC </mat-option>
+                                        <mat-option value="INTERMEDIATE"> INTERMEDIATE </mat-option>
+                                        <mat-option value="ADVANCE"> ADVANCE </mat-option>
+                                    </mat-select>
+                                    <mat-error> Skill Level </mat-error>
+                                </mat-form-field>
+                                <button matTooltip="Add a new Skill" mat-raised-button class="btn btn-primary" (click)="addSkill()" style="height: 53px; "> <mat-icon>add</mat-icon> </button>
+                                <button matTooltip="Enter the Skills to the Profile Bot" mat-raised-button class="btn btn-primary" style="width:fit-content; height: 53px; " (click)="sendMessage()"> Enter  </button>
+                            </mat-card>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="center" style=" margin-top:0.5%; width: 100%; height: 5%;">
+                        </div>
+                    </div>        
+                    <br>
+                    <div>
+                        <mat-chip-list #chipList2 aria-label="Domain selection">
+                            <div *ngFor="let skill of skills">
+                                <div *ngIf=" skill.level === basic">
+                                    <mat-chip [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: green;">
+                                        {{skill.skillName}}
+                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                    </mat-chip>
+                                </div>
+                                <div *ngIf="skill.level === intermediate">
+                                    <mat-chip  [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: yellow;">
+                                        {{skill.skillName}}
+                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                    </mat-chip>
+                                </div>
+                                <div *ngIf="skill.level === advance">
+                                    <mat-chip  [selectable]="selectable" [removable]="removable" (removed)="removeSkill(skill)" style="background-color: red;">
+                                        {{skill.skillName}}
+                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                    </mat-chip>
+                                </div>
+                            </div>
+                        </mat-chip-list>
+                    </div>
+                </div>
+                <div *ngIf="submitChecker==true" fxLayout="column">
+                    <br>
+                    <div style="text-align: center; width: 100%" class="mat-h2">Please select whether to submit the data or to repeat the process again. </div>
+                    <div fxLayout="row" fxLayoutGap="2%" fxLayoutAlign="space-between center" fxLayout.xs = "column">
+                        <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center" style=" margin-top:0.5%; margin-left:auto; margin-right:auto; height: fit-content; width: fit-content;">
+                            <button fxFlex="10%" mat-raised-button class="btn btn-secondary" style="padding: 3%;" (click)="retry()"> Retry  </button>
+                        </div>
+                        <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center" style=" margin-top:0.5%; margin-left:auto; margin-right:auto; height: fit-content; width: fit-content;">
+                            <button fxFlex="10%" mat-raised-button class="btn btn-primary" style="padding: 3%;" (click)="submit()"> Submit  </button>
+                        </div>  
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+       
+    </div>
+</div>
+<br><br><br>
+</body>

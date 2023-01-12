@@ -1,0 +1,443 @@
+<head>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  <!-- <link rel="stylesheet" href="css/bootstrap-multiselect/bootstrap-multiselect.css" type="text/css"> -->
+  <script type="text/javascript" src="js/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="trianglify.js"></script>
+
+</head>
+<div>
+  <div>
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand" style="margin-right: 80%; font-size: xx-large; color: #434262;">Quantum</a>
+    
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+      <!-- <div >   <input class="btn btn-primary" type="submit" value="Signup"></div> -->
+      <button type="button" class="btn btn-primary " (click)="showRegister()" *ngIf="showLogin">Signup</button>
+      <button type="button" class="btn btn-primary " (click)="showLoginForm() " *ngIf="!showLogin">Login</button>
+
+   
+  </nav>
+</div>
+
+</div>
+<!-- <div class="container"> -->
+<div class="first">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm">
+        <strong>
+          <p style="font-size: xx-large; color: white; margin-top: 150px;">Welcome to Quantum,<br />The team builder
+            app,
+            <br />this application will help you to allocate resources for your project
+          </p>
+        </strong>
+
+        <!-- <div ><img class="img-responsive" src="https://image.freepik.com/free-vector/businessman-presenting-business-professional-office-teamwork-animation-motion-colleague-seminar-meeting_40876-1626.jpg" style="height: 350px; width: 900px;"></div> -->
+      </div>
+
+
+      <div fxLayout="column" >
+        <div class="col-sm">
+
+          <!-- login form -->
+          <div id="loginbox" style="margin-top:145px;" *ngIf="showLogin">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <div class="panel-title" style="text-align: center; font-size: x-large;">Login to Quantum</div>
+              </div>
+
+              <div style="margin-top:30px;" class="panel-body">
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <div id="loginform" class="form-horizontal" role="form" [formGroup]="loginForm" #regForm="ngForm"
+                  style="font-size: 12px">
+
+                  <i class="fa fa-user icon fa-lg" ></i> &nbsp;
+                  <mat-form-field appearance="outline" class="full-width" [style.width.px]=280 >
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-hint align="start">Enter valid email id</mat-hint>
+                    <mat-error>
+                      Email Required
+                    </mat-error>
+                  </mat-form-field><br><br>
+                  <i class="fa fa-lock fa-lg" aria-hidden="true"></i> &nbsp;
+                  <mat-form-field appearance="outline" class="full-width" [style.width.px]=280 >
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" size="30">
+                    <mat-hint align="start">Min 5 characters</mat-hint>
+                    <mat-error>
+                      Password Required
+                    </mat-error>
+                  </mat-form-field> <br>
+                  <div class="d-grid gap-2" style="text-align: center;">
+                    <button class="btn btn-primary" id="loginSubmitBotton" type="submit" (click)="submitLogin()"
+                      [disabled]="loginForm.invalid" style="text-align: center;">Login</button>
+                  </div>
+                  <br>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- registration form -->
+        <div fxLayout="column" >
+        <div *ngIf="!showLogin">
+          <div id="loginbox" style="margin-top:145px;">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <div class="panel-title" style="text-align: center; font-size: x-large;">SignUp to Quantum</div>
+              </div>
+
+              <div style="margin-top:30px;" class="panel-body">
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <div id="loginform" class="form-horizontal" role="form" [formGroup]="signupForm" #regForm="ngForm"
+                  style="font-size: 12px">
+                  <i class="fa fa-user icon fa-lg"></i> &nbsp;
+                  <mat-form-field appearance="outline" class="full-width" [style.width.px]=280>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-hint align="start">Enter valid email id</mat-hint>
+                    <mat-error>
+                      Email Required
+                    </mat-error>
+                  </mat-form-field><br><br>
+                  <i class="fa fa-lock fa-lg" aria-hidden="true"></i> &nbsp;
+                  <mat-form-field appearance="outline" class="full-width" [style.width.px]=280>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" size="30">
+                    <mat-hint align="start">Min 5 characters</mat-hint>
+                    <mat-error>
+                      Password Required
+                    </mat-error>
+                  </mat-form-field> <br>
+                  <div class="d-grid gap-2" style="text-align: center;">
+                    <button class="btn btn-primary" type="submit" (click)="submitRegister()"
+                      [disabled]="signupForm.invalid" style="text-align: center; ">Signup</button>
+                  </div> <br>
+                  <!-- <div class="d-grid gap-2" style="text-align: center;">
+                    <button class="btn btn-primary btn-lg" (click)="submitRegister()" [disabled]="signupForm.invalid">Submit</button>
+                  </div> -->
+                </div>
+              
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<br>
+
+
+<div class="second">
+  <div class="container">
+    <!-- <h1 style="text-align: center; ">
+      Resource allocation definition
+    </h1>
+    <br>
+    <p style="text-align: center; font-size: large; ">
+      Resource allocation—part art, part science as some call it—is recognizing the best available resources for the
+      project,
+      assigning them to your team and monitoring their workload throughout the work, and re-assigning resources if
+      needed.
+    </p>
+    <br>
+    <div>
+      <img class="img-responsive"
+        src="https://cdn2.hubspot.net/hub/1726473/file-3767598525-jpg/blog-files/goanimate1.jpg">
+    </div> -->
+    <h1 style="text-align: center; ">
+      Resource allocation definition
+    </h1>
+    <br>
+    <p style="text-align: center; font-size: large; ">
+      Resource allocation—part art, part science as some call it—is recognizing the best available resources for the
+      project,
+      assigning them to your team and monitoring their workload throughout the work, and re-assigning resources if
+      needed.
+    </p>
+    <br>
+    <div>
+      <img class="img-responsive"
+        src="https://cdn2.hubspot.net/hub/1726473/file-3767598525-jpg/blog-files/goanimate1.jpg">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+      integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+<br>
+
+<div>
+  <div class="third">
+    <div class="container">
+      <div class="container">
+        <h1 style="text-align: center;">Features Used To Build This Application</h1>
+        <br>
+        <div class="row">
+          <div class="col-sm">
+            <div class="card border-0" style="width: 35rem;" style="height: 35rem; ">
+              <div style="text-align: center;">
+                <img src="https://www.kimbleapps.com/site/wp-content/uploads/icon_Collaboration-585x500.png"
+                  class="card-img-top" alt="..." style="width: 200px; height: 150px; ">
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="display: block; text-align: justify; text-justify: inter-word;">
+                  As you can see optimized task management requires a group of people working together. And that
+                  requires effective communication within your team. It requires appropriate time management too.
+                  You must organize things in such a way that your team spends only the required amount of time
+                  allocated to each task and not a minute more.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="card border-0" style="width: 35rem;" style="height: 35rem;">
+              <div style="text-align: center;">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9dT8qB_Rhz6R1IjmTHFCNUL-Ne0ElD2MX9g&usqp=CAU"
+                  class="card-img-top" alt="..." style="width: 170px; height: 150px;">
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="display: block; text-align: justify; text-justify: inter-word;">
+                  Dialogflow is a natural language understanding platform that simplifies the design and integration of
+                  conversational user experiences for mobile apps, web apps, bots, and more.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="card border-0" style="width: 35rem;" style="height: 35rem;">
+              <div style="text-align: center;">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1rL6Pshc_J2pbg4udYLv0c2zSkIgaodLCFA&usqp=CAU"
+                  class="card-img-top" alt="..." style="width: 200px; height: 150px; margin-left: 40px;">
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="display: block; text-align: justify; text-justify: inter-word;">
+                  Two-factor authentication (2FA), sometimes referred to as two-step verification or dual-factor
+                  authentication, is a security process in which users provide two different authentication factors to
+                  verify themselves.
+                  This process is done to better protect both the user's credentials and the resources the user can
+                  access.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br>
+
+
+    <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="card border-0" style="width: 35rem;" style="height: 35rem;">
+              <div style="text-align: center;">
+                <img
+                  src="https://previews.123rf.com/images/tvectoricons/tvectoricons1808/tvectoricons180805650/111605127-resources-icon-vector-isolated-on-white-background-resources-transparent-sign-line-and-outline-eleme.jpg"
+                  class="card-img-top" alt="..." style="width: 150px; height: 130px; ">
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="display: block; text-align: justify; text-justify: inter-word;">
+                  In project management, automation facilitates the creation and use of resource pools. Project
+                  management software enables you to create specific project files for resource information,
+                  which makes managing information and task assignments much easier.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="card border-0" style="width: 35rem;" style="height: 35rem;">
+              <div style="text-align: center;">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlTVOfG-rElEL2T4FamDD6uwAqojprAXVbA&usqp=CAU"
+                  class="card-img-top" alt="..." style="width: 150px; height: 130px; ">
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="display: block; text-align: justify; text-justify: inter-word;">
+                  In this the projects are going to be in the profile page of the every resource so that the resource
+                  can go through those projects and check wether there are any projects that match his skills so he can
+                  apply for the project,
+                  and he can show his intrest among that project.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="card border-0" style="width: 35rem;" style="height: 35rem;">
+              <div style="text-align: center;">
+                <img src="https://image.flaticon.com/icons/png/128/3315/3315581.png" class="card-img-top" alt="..."
+                  style="width: 150px; height: 130px;">
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="display: block; text-align: justify; text-justify: inter-word;">
+                  Resource management is acquiring, allocating and managing the resources, such as individuals and their
+                  skills, finances, technology, materials, machinery and natural resources required for a project.
+                  Resource management ensures that internal and external resources are used effectively on time and to
+                  budget
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<br>
+<!-- <div class="four" style="background-color: #434262;">
+  <div class="container">
+    <h1 style="text-align: center; color: whitesmoke">challenges project managers face</h1>
+    <br>
+    <h4 style="color: bisque;">1. Resource capacity planning is poor</h4>
+    <p style="color: white;">What is “capacity”? Capacity is the resources available to get the job done or deliver a
+      project on time and within budget.
+      Often organizations don’t have any idea to measure their capacity and hence they are unable to plan their
+      resources. One way to tackle this is to adopt a purpose-built resource management software.</p>
+
+
+    <br>
+    <h4 style="color: bisque;">2. Resource risks are not assessed</h4>
+    <p style="color: white;">Many organizations assess risks related to process, technology and unforeseen events. But
+      they don’t think about risks associated with the resources.
+      A project manager or a resources manager should sit down and create a list of every possible risk and opportunity
+      they can think of while allocating resources.</p>
+
+    <br>
+    <h4 style="color: bisque;">3. Not enough appropriately skilled resources</h4>
+    <p style="color: white;">It is not enough to just have resources, they should also possess skill sets required to
+      successfully complete the project and skillsets useful to the organization in general.
+      Allocating resources without taking account their skills sets can be a waste of time.</p>
+
+
+    <br>
+    <h4 style="color: bisque;">4. Too many unplanned requests for resources</h4>
+    <p style="color: white;">In many organizations, new projects are popping up every now and then. Some of these
+      projects which are aligned to the organizations goals and strategy are important and some are not.
+      So, the first step towards resource management and planning is to get a handle on demand, and then accordingly
+      allocate resources.</p>
+
+
+    <br>
+    <h4 style="color: bisque;">5. Resource utilization is poorly documented</h4>
+    <p style="color: white;">While managing projects, it is important to document all resource utilization and
+      allocation. In many organizations, this is done manually on lengthy spreadsheets which often contains errors.
+      That is why an organization on the higher end of the project management maturity should rely on purpose built
+      software, not spreadsheets, to document resource allocation and utilization.</p>
+  </div> 
+</div>-->
+
+<div class="four" style="background-color: #434262;"><br>
+  <div class="container">
+    <h1 style="text-align: center; color: whitesmoke; font-weight: bolder; font-family: 'Trebuchet MS', sans-serif;">
+      Challenges Project Managers Face</h1>
+    <br>
+    <div class="row">
+      <div class="col-sm">
+        <!-- <div class="card text-white bg-secondary mb-3" style="max-width: 40rem; height: 40rem;"> -->
+          <div class="card text-white bg-secondary mb-3" fxFlex="100%">
+          <div class="card-header" style="font-size: medium;">Resource capacity planning is poor</div>
+          <div class="card-body">
+            <p class="card-text" >What is
+              “capacity”? Capacity is the resources available to get the job done or deliver a
+              project on time and within budget.
+              Often organizations don’t have any idea to measure their capacity and hence they are unable to plan their
+              resources. One way to tackle this is to adopt a purpose-built resource management software.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm">
+        <div class="card text-white bg-secondary mb-3" fxFlex="100%">
+          <div class="card-header" style="font-size: medium;">Resource risks are not assessed</div>
+          <div class="card-body">
+            <p class="card-text" >Many
+              organizations assess risks related to process, technology and unforeseen events. But
+              they don’t think about risks associated with the resources.
+              A project manager or a resources manager should sit down and create a list of every possible risk and
+              opportunity
+              they can think of while allocating resources.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm">
+        <div class="card text-white bg-secondary mb-3" fxFlex="100%">
+          <div class="card-header">Not enough appropriately skilled resources</div>
+          <div class="card-body">
+            <p class="card-text" >It is not enough
+              to just have resources, they should also possess skill sets required to
+              successfully complete the project and skillsets useful to the organization in general.
+              Allocating resources without taking account their skills sets can be a waste of time.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm">
+        <div class="card text-white bg-secondary mb-3" fxFlex="100%">
+          <div class="card-header">Too many unplanned requests for resources</div>
+          <div class="card-body">
+            <p class="card-text" >In many
+              organizations, new projects are popping up every now and then. Some of these
+              projects which are aligned to the organizations goals and strategy are important and some are not.
+              So, the first step towards resource management and planning is to get a handle on demand, and then
+              accordingly
+              allocate resources.</p>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <div class="card text-white bg-secondary mb-3" fxFlex="100%">
+          <div class="card-header">Resource utilization is poorly documented</div>
+          <div class="card-body">
+            <p class="card-text"  >While managing
+              projects, it is important to document all resource utilization and
+              allocation. In many organizations, this is done manually on lengthy spreadsheets which often contains
+              errors.
+              That is why an organization on the higher end of the project management maturity should rely on purpose
+              built
+              software, not spreadsheets, to document resource allocation and utilization.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+
+
+</div>

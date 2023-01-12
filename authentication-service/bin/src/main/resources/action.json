@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "role": "MANAGER",
+      "action": [
+        {
+          "name": "Home",
+          "scope": []
+        },
+        {
+          "name": "CreateProject",
+          "scope": [
+            "create_project"
+          ]
+        },
+        {
+          "name": "CreateTeam",
+          "scope": [
+            "form_team"
+          ]
+        },
+        {
+          "name": "MyProjects",
+          "scope": [
+            "view_projects"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "RESOURCE",
+      "action": [
+        {
+          "name": "Home",
+          "scope": []
+        },
+        {
+          "name": "MyProjects",
+          "scope": [
+            "view_projects"
+          ]
+        }
+      ]
+    }
+  ]
+}

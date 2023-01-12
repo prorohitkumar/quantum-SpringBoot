@@ -1,0 +1,18 @@
+City,AgeGroup,MinAge,MaxAge,ProfessionalDomain,ProfessionalExperience,MinProfessionalExperience,MaxProfessionalExperience,TechnicalSkills,CTC,Designation
+Rajmandry,21-27,21,27,Education,Fresher,1,2,Java,300000,Full Stack
+Rampur,28-35,28,35,Insurance,Intermediate,2,7,Angular,350000,Backend
+Bangalore,36-45,36,45,Retail,Mid-senior,7,12,JavaScript,400000,Testing
+Bangalore,45-60,45,60,IT,Senior,12,17,Bootstrap,450000,Frontend
+Delhi,,,,Banking,,,,Docker,500000,Dev Ops
+Hyderabad,,,,Automobile,,,,C#,550000,Mean Stack
+Pune,,,,Energy,,,,NoSQL,600000,Mern Stack
+Mumbai,,,,Engineering and Construction,,,,SQL,650000
+Chennai,,,,FMCG,,,,Graph Database,700000
+Noida,,,,,,,,React,750000
+Gurgaon,,,,,,,,Python,800000
+Ahmedabad,,,,,,,,Ruby On Rails
+Mysore,,,,,,,,Spring
+Goa,,,,,,,,Hibernate
+Kolkata,,,,,,,,
+Chandigarh,,,,,,,,
+Lucknow,,,,,,,,

@@ -1,0 +1,29 @@
+.mat-card{
+    width: 240px;
+}
+.card {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+    border-radius: 10px;
+    margin: 2rem;
+   
+
+   
+}
+mat-card:hover  {
+    box-shadow: 0 50px 50px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+    background:linear-gradient(180deg, rgb(206, 198, 198), rgb(200, 137, 137));
+  }
+
+  .md-chip{
+    display:inline-flex;
+    justify-content:space-around;
+    padding: 0 12px;
+    border-radius: 32px;
+
+  }
+  .material-icons{
+     
+      margin-top: 0%;
+      float: left;
+  }
+ 
